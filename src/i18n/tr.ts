@@ -327,4 +327,7 @@ export default {
   'footer.tagline': 'Geleceği Planlayan Stratejik Çözüm Ortağınız',
   'footer.rights': '© 2025 GİTA Teknoloji. Tüm hakları saklıdır.',
   'footer.email': 'info@gitateknoloji.com',
+  'footer.privacy':   'Aydınlatma Metni',
+  'footer.copyright': 'Copyright © 2026 GİTA Teknoloji. Tüm hakları saklıdır.',
+  'footer.linkedin':  'LinkedIn',
 };

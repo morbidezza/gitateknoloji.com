@@ -327,4 +327,7 @@ export default {
   'footer.tagline': 'Your Strategic Technology Partner for the Future',
   'footer.rights': '© 2025 GITA Teknoloji. All rights reserved.',
   'footer.email': 'info@gitateknoloji.com',
+  'footer.privacy':   'Privacy Notice',
+  'footer.copyright': 'Copyright © 2026 GITA Teknoloji. All rights reserved.',
+  'footer.linkedin':  'LinkedIn',
 };
