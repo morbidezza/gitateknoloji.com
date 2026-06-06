@@ -1,20 +1,13 @@
-import type { APIRoute } from 'astro';
-
-export const prerender = false;
-
-const safe = (s: string) =>
-  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-export const POST: APIRoute = async ({ request }) => {
-  const json = (data: object, status = 200) =>
+export async function onRequestPost(context) {
+  const json = (data, status = 200) =>
     new Response(JSON.stringify(data), {
       status,
       headers: { 'Content-Type': 'application/json' },
     });
 
-  let fd: FormData;
+  let fd;
   try {
-    fd = await request.formData();
+    fd = await context.request.formData();
   } catch {
     return json({ ok: false, error: 'invalid_request' }, 400);
   }
@@ -30,20 +23,14 @@ export const POST: APIRoute = async ({ request }) => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     return json({ ok: false, error: 'invalid_email' }, 400);
 
-  const apiKey = import.meta.env.RESEND_API_KEY;
+  const apiKey = context.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error('RESEND_API_KEY is not set');
     return json({ ok: false, error: 'server_config_error' }, 500);
   }
 
-  const html = `
-    <h2>Yeni İletişim Formu Mesajı</h2>
-    <p><strong>Ad Soyad:</strong> ${safe(name)}</p>
-    <p><strong>E-posta:</strong> ${safe(email)}</p>
-    <p><strong>Konu:</strong> ${safe(subject)}</p>
-    <hr />
-    <p>${safe(message).replace(/\n/g, '<br>')}</p>
-  `;
+  const safe = (s) =>
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -57,7 +44,14 @@ export const POST: APIRoute = async ({ request }) => {
         to:   'info@gitateknoloji.com',
         reply_to: email,
         subject: `[Web Formu] ${safe(subject)}`,
-        html,
+        html: `
+          <h2>Yeni İletişim Formu Mesajı</h2>
+          <p><strong>Ad Soyad:</strong> ${safe(name)}</p>
+          <p><strong>E-posta:</strong> ${safe(email)}</p>
+          <p><strong>Konu:</strong> ${safe(subject)}</p>
+          <hr />
+          <p>${safe(message).replace(/\n/g, '<br>')}</p>
+        `,
       }),
     });
 
@@ -71,4 +65,4 @@ export const POST: APIRoute = async ({ request }) => {
     console.error('Unexpected error:', err);
     return json({ ok: false, error: 'unexpected_error' }, 500);
   }
-};
+}
