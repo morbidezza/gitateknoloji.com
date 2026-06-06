@@ -317,6 +317,10 @@ export default {
   'contact.success': 'Your message has been sent. We will get back to you shortly.',
   'contact.error': 'An error occurred. Please try again.',
   'contact.location_placeholder': 'Address information will be added soon.',
+  'contact.hq_label':       'Headquarters',
+  'contact.branch_label':   'Branch',
+  'contact.hq_address':     'Barbaros Mah. Mor Sümbül Sk. Deluxia Palace K:11 D:8 Ataşehir/İstanbul',
+  'contact.branch_address': 'Merdivenköy Mah. Nur Sk. A Blok No:1/1 İç Kapı No:115 Kadıköy/İstanbul',
 
   // ─── Home CTA Banner ──────────────────────────────────────────────────────
   'home.cta.title': 'Let\'s plan your project together',

@@ -317,6 +317,10 @@ export default {
   'contact.success': 'Mesajınız iletildi. En kısa sürede size dönüş yapacağız.',
   'contact.error': 'Bir hata oluştu. Lütfen tekrar deneyin.',
   'contact.location_placeholder': 'Adres bilgisi yakında eklenecektir.',
+  'contact.hq_label':       'Merkez',
+  'contact.branch_label':   'Şube',
+  'contact.hq_address':     'Barbaros Mah. Mor Sümbül Sk. Deluxia Palace K:11 D:8 Ataşehir/İstanbul',
+  'contact.branch_address': 'Merdivenköy Mah. Nur Sk. A Blok No:1/1 İç Kapı No:115 Kadıköy/İstanbul',
 
   // ─── Home CTA Banner ──────────────────────────────────────────────────────
   'home.cta.title': 'Projenizi birlikte planlayalım',

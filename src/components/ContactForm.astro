@@ -6,135 +6,183 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const isTr = lang === 'tr';
 ---
 
-<form class="contact-form" id="contact-form" novalidate>
-  <div class="form-row">
-    <div class="form-group">
-      <label for="cf-name">{t('contact.name')}</label>
-      <input type="text" id="cf-name" name="name" autocomplete="name" required placeholder={t('contact.name')} />
-    </div>
-    <div class="form-group">
-      <label for="cf-email">{t('contact.email')}</label>
-      <input type="email" id="cf-email" name="email" autocomplete="email" required placeholder={t('contact.email')} />
-    </div>
+<form id="contact-form" novalidate>
+
+  <div class="form-group">
+    <label for="cf-name">{isTr ? 'Adınız Soyadınız' : 'Full Name'}</label>
+    <input type="text" id="cf-name" name="name" required autocomplete="name" />
+    <span class="field-error" id="name-error"></span>
   </div>
 
   <div class="form-group">
-    <label for="cf-subject">{t('contact.subject')}</label>
-    <input type="text" id="cf-subject" name="subject" required placeholder={t('contact.subject')} />
+    <label for="cf-email">{isTr ? 'E-posta Adresiniz' : 'Email Address'}</label>
+    <input type="email" id="cf-email" name="email" required autocomplete="email" />
+    <span class="field-error" id="email-error"></span>
   </div>
 
   <div class="form-group">
-    <label for="cf-message">{t('contact.message')}</label>
-    <textarea id="cf-message" name="message" required placeholder={t('contact.message')}></textarea>
+    <label for="cf-phone">{isTr ? 'Telefon Numarası' : 'Phone Number'}</label>
+    <input type="tel" id="cf-phone" name="phone" required autocomplete="tel" inputmode="numeric" />
+    <span class="field-error" id="phone-error"></span>
   </div>
 
-  <div class="form-footer">
-    <button type="submit" class="btn-primary contact-form__submit">
-      <span class="submit-text">{t('contact.send')}</span>
-      <svg class="submit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-      </svg>
-      <svg class="submit-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-      </svg>
-    </button>
+  <div class="form-group">
+    <label for="cf-subject">{isTr ? 'Konu' : 'Subject'}</label>
+    <input type="text" id="cf-subject" name="subject" required />
+    <span class="field-error" id="subject-error"></span>
   </div>
 
-  <div class="form-status" id="form-status" role="alert" aria-live="polite" hidden>
-    <span class="form-status__icon" aria-hidden="true"></span>
-    <span class="form-status__text"></span>
+  <div class="form-group">
+    <label for="cf-message">{isTr ? 'Mesajınız' : 'Your Message'}</label>
+    <textarea id="cf-message" name="message" required></textarea>
+    <span class="field-error" id="message-error"></span>
   </div>
+
+  <div id="form-status" class="form-status"></div>
+
+  <button type="submit" class="btn-primary contact-submit">
+    {isTr ? 'Gönder' : 'Send'}
+  </button>
+
 </form>
 
-<script define:vars={{ successMsg: t('contact.success'), errorMsg: t('contact.error') }}>
-  const form = document.getElementById('contact-form');
+<style>
+  form { display: flex; flex-direction: column; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  input, textarea {
+    width: 100%;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color var(--transition);
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 3px rgba(0, 200, 200, 0.12);
+  }
+
+  textarea { min-height: 160px; resize: vertical; }
+
+  .field-error {
+    font-size: 0.78rem;
+    color: #f87171;
+    min-height: 1rem;
+    display: block;
+  }
+
+  .form-status {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    min-height: 1.5rem;
+  }
+  .form-status.success { color: var(--color-teal); }
+  .form-status.error   { color: #f87171; }
+
+  .contact-submit { align-self: flex-start; }
+</style>
+
+<script define:vars={{ isTr }}>
+  const form   = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
-  const statusText = status?.querySelector('.form-status__text');
-  const statusIcon = status?.querySelector('.form-status__icon');
-  const submitBtn = form?.querySelector('.contact-form__submit');
 
-  function showStatus(ok, msg) {
-    if (!status || !statusText || !statusIcon) return;
-    status.removeAttribute('hidden');
-    status.className = `form-status form-status--${ok ? 'success' : 'error'}`;
-    statusIcon.textContent = ok ? '✓' : '✕';
-    statusText.textContent = msg;
+  const errMsgs = {
+    name:    { empty: isTr ? 'Ad soyad gereklidir.' : 'Full name is required.' },
+    email:   { empty: isTr ? 'E-posta adresi gereklidir.' : 'Email is required.',
+               invalid: isTr ? 'Geçerli bir e-posta adresi giriniz.' : 'Please enter a valid email address.' },
+    phone:   { empty: isTr ? 'Telefon numarası gereklidir.' : 'Phone number is required.',
+               invalid: isTr ? 'Geçerli bir telefon numarası giriniz (sadece rakam, en az 10 hane).' : 'Please enter a valid phone number (numbers only, min 10 digits).' },
+    subject: { empty: isTr ? 'Konu gereklidir.' : 'Subject is required.' },
+    message: { empty: isTr ? 'Mesaj gereklidir.' : 'Message is required.' },
+  };
+
+  function setError(id, msg) {
+    const el = document.getElementById(id + '-error');
+    if (el) el.textContent = msg;
   }
 
-  function setLoading(loading) {
-    if (!submitBtn) return;
-    submitBtn.disabled = loading;
-    submitBtn.classList.toggle('loading', loading);
+  function clearErrors() {
+    ['name','email','phone','subject','message'].forEach(f => setError(f, ''));
   }
+
+  function validate(d) {
+    let ok = true;
+    if (!d.name)    { setError('name',    errMsgs.name.empty);    ok = false; }
+    if (!d.email)   { setError('email',   errMsgs.email.empty);   ok = false; }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { setError('email', errMsgs.email.invalid); ok = false; }
+    if (!d.phone)   { setError('phone',   errMsgs.phone.empty);   ok = false; }
+    else if (!/^\d{10,}$/.test(d.phone)) { setError('phone', errMsgs.phone.invalid); ok = false; }
+    if (!d.subject) { setError('subject', errMsgs.subject.empty); ok = false; }
+    if (!d.message) { setError('message', errMsgs.message.empty); ok = false; }
+    return ok;
+  }
+
+  document.getElementById('cf-phone')?.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '');
+  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    const name    = data.get('name')?.toString().trim();
-    const email   = data.get('email')?.toString().trim();
-    const subject = data.get('subject')?.toString().trim();
-    const message = data.get('message')?.toString().trim();
+    clearErrors();
+    status.textContent = '';
+    status.className = 'form-status';
 
-    if (!name || !email || !subject || !message) { showStatus(false, errorMsg); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showStatus(false, errorMsg); return; }
+    const fd = new FormData(form);
+    const d = {
+      name:    fd.get('name')?.toString().trim()    ?? '',
+      email:   fd.get('email')?.toString().trim()   ?? '',
+      phone:   fd.get('phone')?.toString().trim()   ?? '',
+      subject: fd.get('subject')?.toString().trim() ?? '',
+      message: fd.get('message')?.toString().trim() ?? '',
+    };
 
-    setLoading(true);
+    if (!validate(d)) return;
+
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = isTr ? 'Gönderiliyor...' : 'Sending...';
+
     try {
-      const res  = await fetch('/api/contact', { method: 'POST', body: data });
+      const res  = await fetch('/api/contact', { method: 'POST', body: fd });
       const json = await res.json();
-      if (json.ok) { showStatus(true, successMsg); form.reset(); }
-      else         { showStatus(false, errorMsg); }
-    } catch { showStatus(false, errorMsg); }
-    finally  { setLoading(false); }
+      if (json.ok) {
+        status.textContent = isTr
+          ? 'Mesajınız iletildi. En kısa sürede size dönüş yapacağız.'
+          : 'Your message has been sent. We will get back to you shortly.';
+        status.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error(json.error);
+      }
+    } catch {
+      status.textContent = isTr
+        ? 'Bir hata oluştu. Lütfen tekrar deneyin.'
+        : 'An error occurred. Please try again.';
+      status.className = 'form-status error';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = isTr ? 'Gönder' : 'Send';
+    }
   });
 </script>
-
-<style>
-  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-  label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    letter-spacing: 0.02em;
-  }
-
-  .form-footer { display: flex; justify-content: flex-end; }
-
-  .contact-form__submit { position: relative; min-width: 140px; }
-  .submit-spinner { display: none; animation: spin 0.8s linear infinite; }
-  .contact-form__submit.loading .submit-icon    { display: none; }
-  .contact-form__submit.loading .submit-spinner { display: block; }
-  .contact-form__submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none !important; }
-
-  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-  .form-status {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.875rem 1rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.92rem;
-    border: 1px solid;
-  }
-  .form-status--success { background: rgba(0,200,200,0.08); border-color: rgba(0,200,200,0.3); color: var(--color-teal); }
-  .form-status--error   { background: rgba(239,68,68,0.08);  border-color: rgba(239,68,68,0.3);  color: #f87171; }
-  .form-status__icon    { font-weight: 700; flex-shrink: 0; }
-
-  @media (max-width: 600px) {
-    .form-row { grid-template-columns: 1fr; }
-    .form-footer { justify-content: stretch; }
-    .contact-form__submit { width: 100%; justify-content: center; }
-  }
-</style>

@@ -30,14 +30,14 @@ const currentPath = Astro.url.pathname;
             <p class="contact-info__label">{t('contact.email_label')}</p>
             <a href="mailto:info@gitateknoloji.com" class="contact-info__val">info@gitateknoloji.com</a>
           </div>
-          <div class="contact-offices">
-            <div class="office">
-              <h3 class="office__title">{t('contact.istanbul')}</h3>
-              <p class="office__addr">{t('contact.location_placeholder')}</p>
+          <div class="contact-locations">
+            <div class="location-item">
+              <span class="location-label">{t('contact.hq_label')}</span>
+              <address>{t('contact.hq_address')}</address>
             </div>
-            <div class="office">
-              <h3 class="office__title">{t('contact.ankara')}</h3>
-              <p class="office__addr">{t('contact.location_placeholder')}</p>
+            <div class="location-item">
+              <span class="location-label">{t('contact.branch_label')}</span>
+              <address>{t('contact.branch_address')}</address>
             </div>
           </div>
         </div>
@@ -60,9 +60,9 @@ const currentPath = Astro.url.pathname;
   .contact-info__label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-teal); margin-bottom: 0.4rem; }
   .contact-info__val { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--color-text); transition: color var(--transition); }
   .contact-info__val:hover { color: var(--color-teal); }
-  .contact-offices { display: flex; flex-direction: column; gap: 1.5rem; }
-  .office { padding: 1.25rem; background: var(--color-bg-2); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
-  .office__title { font-size: 0.95rem; margin-bottom: 0.4rem; }
-  .office__addr  { color: var(--color-text-muted); font-size: 0.88rem; font-style: italic; }
+  .contact-locations { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+  .location-item { border-left: 3px solid var(--color-teal); padding-left: 1rem; }
+  .location-label { display: block; font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-teal); margin-bottom: 0.35rem; }
+  address { font-style: normal; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; }
   @media (max-width: 768px) { .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
 </style>

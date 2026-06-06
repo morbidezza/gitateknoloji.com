@@ -14,14 +14,18 @@ export async function onRequestPost(context) {
 
   const name    = fd.get('name')?.toString().trim()    ?? '';
   const email   = fd.get('email')?.toString().trim()   ?? '';
+  const phone   = fd.get('phone')?.toString().trim()   ?? '';
   const subject = fd.get('subject')?.toString().trim() ?? '';
   const message = fd.get('message')?.toString().trim() ?? '';
 
-  if (!name || !email || !subject || !message)
+  if (!name || !email || !phone || !subject || !message)
     return json({ ok: false, error: 'missing_fields' }, 400);
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     return json({ ok: false, error: 'invalid_email' }, 400);
+
+  if (!/^\d{10,}$/.test(phone))
+    return json({ ok: false, error: 'invalid_phone' }, 400);
 
   const apiKey = context.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -48,6 +52,7 @@ export async function onRequestPost(context) {
           <h2>Yeni İletişim Formu Mesajı</h2>
           <p><strong>Ad Soyad:</strong> ${safe(name)}</p>
           <p><strong>E-posta:</strong> ${safe(email)}</p>
+          <p><strong>Telefon:</strong> ${safe(phone)}</p>
           <p><strong>Konu:</strong> ${safe(subject)}</p>
           <hr />
           <p>${safe(message).replace(/\n/g, '<br>')}</p>
