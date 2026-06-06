@@ -1,0 +1,263 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: string;
+}
+const { title, description, lang } = Astro.props;
+const canonicalPath = Astro.url.pathname.replace(/^\/(tr|en)/, '') || '/';
+---
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | GİTA Teknoloji</title>
+    <meta name="description" content={description} />
+    <link rel="alternate" hreflang="tr" href={`https://gitateknoloji.com/tr${canonicalPath}`} />
+    <link rel="alternate" hreflang="en" href={`https://gitateknoloji.com/en${canonicalPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://gitateknoloji.com/tr${canonicalPath}`} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">İçeriğe geç / Skip to content</a>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* ── CSS Variables ─────────────────────────────────────────────────────── */
+  :root {
+    --color-bg:        #07080f;
+    --color-bg-2:      #0d1117;
+    --color-bg-3:      #111827;
+    --color-teal:      #00c8c8;
+    --color-blue:      #1a4fa0;
+    --color-blue-mid:  #2563eb;
+    --color-text:      #f0f4f8;
+    --color-text-muted:#8899aa;
+    --color-border:    rgba(0, 200, 200, 0.15);
+    --color-glow:      rgba(0, 200, 200, 0.08);
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Reset ─────────────────────────────────────────────────────────────── */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  img, svg {
+    max-width: 100%;
+    display: block;
+  }
+
+  button, input, textarea, select {
+    font: inherit;
+  }
+
+  /* ── Base ───────────────────────────────────────────────────────────────── */
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  /* ── Typography ─────────────────────────────────────────────────────────── */
+  h1, h2, h3, h4 {
+    font-family: 'Syne', sans-serif;
+    line-height: 1.15;
+    color: var(--color-text);
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 5rem);     font-weight: 800; }
+  h2 { font-size: clamp(1.8rem, 4vw, 3rem);     font-weight: 700; }
+  h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; }
+  h4 { font-size: clamp(1rem, 2vw, 1.2rem);     font-weight: 700; }
+
+  p { max-width: 72ch; }
+
+  a {
+    color: var(--color-teal);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  a:hover { color: var(--color-blue-mid); }
+
+  /* ── Skip link ──────────────────────────────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: var(--color-teal);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 1rem; color: #000; }
+
+  /* ── Layout utilities ───────────────────────────────────────────────────── */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section { padding: 6rem 0; }
+  .section--alt { background: var(--color-bg-3); }
+
+  /* ── Section label ──────────────────────────────────────────────────────── */
+  .section-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title-group { margin-bottom: 3rem; }
+  .section-title-group h2 { margin-top: 0.25rem; }
+  .section-title-group p {
+    color: var(--color-text-muted);
+    margin-top: 0.75rem;
+    font-size: 1.05rem;
+  }
+
+  /* ── Background grid ────────────────────────────────────────────────────── */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0, 200, 200, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 200, 200, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--color-teal), var(--color-blue));
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition), transform var(--transition);
+    white-space: nowrap;
+  }
+  .btn-primary:hover  { opacity: 0.88; transform: translateY(-2px); color: #fff; }
+  .btn-primary:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 3px; }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--color-teal);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-teal);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), transform var(--transition);
+    white-space: nowrap;
+  }
+  .btn-outline:hover { background: var(--color-teal); color: #000; transform: translateY(-2px); }
+  .btn-outline:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 3px; }
+
+  /* ── Form elements ──────────────────────────────────────────────────────── */
+  input, textarea, select {
+    width: 100%;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+  input::placeholder, textarea::placeholder { color: var(--color-text-muted); }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-teal);
+    box-shadow: 0 0 0 3px rgba(0, 200, 200, 0.12);
+  }
+  textarea { min-height: 160px; resize: vertical; }
+
+  /* ── Scroll-reveal ──────────────────────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Animations ─────────────────────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50%       { opacity: 0.25; transform: scale(1.08); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(8px); }
+  }
+
+  /* ── Focus visible ──────────────────────────────────────────────────────── */
+  :focus-visible { outline: 2px solid var(--color-teal); outline-offset: 3px; }
+
+  /* ── Scrollbar ──────────────────────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-teal); }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    els.forEach(el => io.observe(el));
+  });
+</script>

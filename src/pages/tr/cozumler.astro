@@ -1,0 +1,222 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import SolutionCard from '../../components/SolutionCard.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const anchors = [
+  { id: 'zayif-akim',       label: t('solutions.lowvoltage.title') },
+  { id: 'kurumsal-ag',      label: t('solutions.network.title') },
+  { id: 'sistem',           label: t('solutions.systems.title') },
+  { id: 'siber-guvenlik',   label: t('solutions.security.title') },
+  { id: 'altyapi-yazilim',  label: t('solutions.infrasoftware.title') },
+  { id: 'ai-ml',            label: t('solutions.ai.title') },
+];
+---
+
+<Base title={t('nav.solutions')} description="GİTA Teknoloji çözümleri: Zayıf akım, ağ, sistem, siber güvenlik, altyapı yazılımları ve yapay zeka." lang={lang}>
+  <Nav lang={lang} currentPath={currentPath} />
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="section-label">{t('nav.solutions')}</span>
+        <h1>{t('solutions.title')}</h1>
+        <p class="page-hero__sub">{t('solutions.subtitle')}</p>
+      </div>
+    </section>
+
+    <div class="solutions-layout container">
+      <!-- Sticky sidebar -->
+      <aside class="solutions-sidebar" aria-label="Çözüm kategorileri">
+        <nav class="sidebar-nav">
+          {anchors.map(a => (
+            <a href={`#${a.id}`} class="sidebar-nav__link">{a.label}</a>
+          ))}
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <div class="solutions-content">
+
+        <!-- 1. Zayıf Akım -->
+        <section id="zayif-akim" class="sol-section" aria-labelledby="zayif-akim-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.lowvoltage.title')}</span>
+            <h2 id="zayif-akim-title">{t('solutions.lowvoltage.title')}</h2>
+            <p>{t('solutions.lowvoltage.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard
+              title={t('solutions.lowvoltage.security.title')}
+              description={t('solutions.lowvoltage.security.intro')}
+              items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]}
+            />
+            <SolutionCard
+              title={t('solutions.lowvoltage.fire.title')}
+              description={t('solutions.lowvoltage.fire.intro')}
+              items={[t('solutions.lowvoltage.fire.compliance'), t('solutions.lowvoltage.fire.detection'), t('solutions.lowvoltage.fire.suppression'), t('solutions.lowvoltage.fire.e2e')]}
+            />
+            <SolutionCard
+              title={t('solutions.lowvoltage.data.title')}
+              description={t('solutions.lowvoltage.data.intro')}
+              items={[t('solutions.lowvoltage.data.design'), t('solutions.lowvoltage.data.quality'), t('solutions.lowvoltage.data.cert'), t('solutions.lowvoltage.data.sustainable')]}
+            />
+          </div>
+        </section>
+
+        <!-- 2. Kurumsal Ağ -->
+        <section id="kurumsal-ag" class="sol-section" aria-labelledby="kurumsal-ag-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.network.title')}</span>
+            <h2 id="kurumsal-ag-title">{t('solutions.network.title')}</h2>
+            <p>{t('solutions.network.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard
+              title={t('solutions.network.wired.title')}
+              description={t('solutions.network.wired.intro')}
+              items={[t('solutions.network.wired.switching'), t('solutions.network.wired.wireless'), t('solutions.network.wired.management')]}
+            />
+            <SolutionCard
+              title={t('solutions.network.sdwan.title')}
+              description={t('solutions.network.sdwan.intro')}
+              items={[t('solutions.network.sdwan.traffic'), t('solutions.network.sdwan.central'), t('solutions.network.sdwan.secure')]}
+            />
+            <SolutionCard
+              title={t('solutions.network.waf.title')}
+              description={t('solutions.network.waf.intro')}
+              items={[t('solutions.network.waf.lb'), t('solutions.network.waf.waf')]}
+            />
+          </div>
+        </section>
+
+        <!-- 3. Sistem -->
+        <section id="sistem" class="sol-section" aria-labelledby="sistem-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.systems.title')}</span>
+            <h2 id="sistem-title">{t('solutions.systems.title')}</h2>
+            <p>{t('solutions.systems.intro')}</p>
+          </div>
+          <div class="sol-cards sol-cards--wide reveal">
+            {[
+              { title: t('solutions.systems.server.title'),  body: t('solutions.systems.server.body') },
+              { title: t('solutions.systems.hci.title'),     body: t('solutions.systems.hci.body') },
+              { title: t('solutions.systems.cloud.title'),   body: t('solutions.systems.cloud.body') },
+              { title: t('solutions.systems.vdi.title'),     body: t('solutions.systems.vdi.body') },
+              { title: t('solutions.systems.backup.title'),  body: t('solutions.systems.backup.body') },
+              { title: t('solutions.systems.dr.title'),      body: t('solutions.systems.dr.body') },
+              { title: t('solutions.systems.linux.title'),   body: t('solutions.systems.linux.body') },
+              { title: t('solutions.systems.devops.title'),  body: t('solutions.systems.devops.body') },
+            ].map(item => (
+              <SolutionCard title={item.title} description={item.body} items={[]} />
+            ))}
+          </div>
+        </section>
+
+        <!-- 4. Siber Güvenlik -->
+        <section id="siber-guvenlik" class="sol-section" aria-labelledby="siber-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.security.title')}</span>
+            <h2 id="siber-title">{t('solutions.security.title')}</h2>
+            <p>{t('solutions.security.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} />
+            <SolutionCard title={t('solutions.security.mdm.title')}     description={t('solutions.security.mdm.body')}     items={[]} />
+            <SolutionCard title={t('solutions.security.dlp.title')}     description={t('solutions.security.dlp.body')}     items={[]} />
+            <SolutionCard title={t('solutions.security.edr.title')}     description={t('solutions.security.edr.body')}     items={[]} />
+          </div>
+        </section>
+
+        <!-- 5. Altyapı Yazılımları -->
+        <section id="altyapi-yazilim" class="sol-section" aria-labelledby="altyapi-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.infrasoftware.title')}</span>
+            <h2 id="altyapi-title">{t('solutions.infrasoftware.title')}</h2>
+            <p>{t('solutions.infrasoftware.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard title={t('solutions.infrasoftware.cluster.title')} description={t('solutions.infrasoftware.cluster.body')} items={[]} />
+            <SolutionCard title={t('solutions.infrasoftware.sdwan.title')}   description={t('solutions.infrasoftware.sdwan.body')}   items={[]} />
+            <SolutionCard title={t('solutions.infrasoftware.storage.title')} description={t('solutions.infrasoftware.storage.body')} items={[]} />
+            <SolutionCard title={t('solutions.infrasoftware.custom.title')}  description={t('solutions.infrasoftware.custom.body')}  items={[]} />
+          </div>
+        </section>
+
+        <!-- 6. AI/ML -->
+        <section id="ai-ml" class="sol-section" aria-labelledby="ai-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.ai.title')}</span>
+            <h2 id="ai-title">{t('solutions.ai.title')}</h2>
+            <p>{t('solutions.ai.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard title={t('solutions.ai.predictive.title')}  description={t('solutions.ai.predictive.body')}  items={[]} />
+            <SolutionCard title={t('solutions.ai.anomaly.title')}     description={t('solutions.ai.anomaly.body')}     items={[]} />
+            <SolutionCard title={t('solutions.ai.data.title')}        description={t('solutions.ai.data.body')}        items={[]} />
+            <SolutionCard title={t('solutions.ai.automation.title')}  description={t('solutions.ai.automation.body')}  items={[]} />
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .page-hero { padding: 7rem 0 4rem; background: linear-gradient(180deg, var(--color-bg-3) 0%, var(--color-bg) 100%); border-bottom: 1px solid var(--color-border); }
+  .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
+  .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
+
+  .solutions-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    align-items: start;
+  }
+
+  .solutions-sidebar { position: sticky; top: 90px; }
+  .sidebar-nav { display: flex; flex-direction: column; gap: 0.25rem; }
+  .sidebar-nav__link {
+    display: block;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    border-left: 2px solid var(--color-border);
+    transition: color var(--transition), border-color var(--transition);
+    line-height: 1.4;
+  }
+  .sidebar-nav__link:hover { color: var(--color-teal); border-left-color: var(--color-teal); }
+
+  .sol-section { padding: 3rem 0; border-bottom: 1px solid var(--color-border); }
+  .sol-section:last-child { border-bottom: none; }
+  .sol-section__header { margin-bottom: 2rem; }
+  .sol-section__header h2 { margin: 0.25rem 0 0.75rem; }
+  .sol-section__header p { color: var(--color-text-muted); font-size: 0.95rem; max-width: 70ch; }
+
+  .sol-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .sol-cards--wide { grid-template-columns: repeat(4, 1fr); }
+
+  @media (max-width: 1024px) {
+    .solutions-layout { grid-template-columns: 1fr; }
+    .solutions-sidebar { position: static; }
+    .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+    .sidebar-nav__link { border-left: none; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+    .sol-cards--wide { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .sol-cards, .sol-cards--wide { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,196 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<Base title={t('nav.about')} description="GİTA Teknoloji hakkında bilgi edinin. 20 yıllık BT tecrübesi, MSP modeli ve stratejik teknoloji ortaklığı." lang={lang}>
+  <Nav lang={lang} currentPath={currentPath} />
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="section-label">{t('nav.about')}</span>
+        <h1>{t('about.title')}</h1>
+        <p class="page-hero__sub">{t('about.subtitle')}</p>
+      </div>
+    </section>
+
+    <!-- Şirket Hikayesi -->
+    <section class="section" aria-labelledby="about-story-title">
+      <div class="container about-story">
+        <div class="about-story__text reveal">
+          <span class="section-label">{t('about.strategy.title')}</span>
+          <h2 id="about-story-title">{t('about.title')}</h2>
+          <p class="about-intro">{t('about.intro')}</p>
+          <p style="margin-top:1rem;color:var(--color-text-muted)">{t('about.strategy.body')}</p>
+          <p style="margin-top:1rem;color:var(--color-text-muted)">{t('about.closing')}</p>
+        </div>
+        <div class="about-story__stats reveal">
+          {[
+            { label: t('about.stat.experience'), icon: '⟳' },
+            { label: t('about.stat.founded'),    icon: '◈' },
+            { label: t('about.stat.msp'),        icon: '◎' },
+            { label: t('about.stat.patent'),     icon: '◆' },
+          ].map(s => (
+            <div class="stat-card">
+              <span class="stat-card__icon" aria-hidden="true">{s.icon}</span>
+              <span class="stat-card__label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Stratejik Yaklaşım -->
+    <section class="section section--alt" aria-labelledby="about-strategy-title">
+      <div class="container">
+        <div class="section-title-group reveal">
+          <span class="section-label">Yaklaşımımız</span>
+          <h2 id="about-strategy-title">{t('about.strategy.title')}</h2>
+        </div>
+        <div class="approach-rows reveal">
+          {[
+            { title: 'Bütünsel Mühendislik', body: 'Karmaşık altyapı sorunlarını bütünsel mühendislik yaklaşımımızla sadeleştiriyor, her iş ihtiyacına özel stratejik çözümler geliştiriyoruz.' },
+            { title: 'Verimlilik Odaklı Yönlendirme', body: 'İşletme verimliliğini artıran tamamlayıcı yazılımlar ve özgün projelerle sürdürülebilir bir teknolojik mimari kuruyoruz.' },
+            { title: 'Proaktif Teknoloji Ortaklığı', body: 'Sadece bir hizmet sağlayıcı değil, işletmelerin dijitalleşme yolculuğunda stratejik bir teknoloji ortağı olarak konumlanıyoruz.' },
+          ].map((item, i) => (
+            <div class="approach-row">
+              <div class="approach-row__num" aria-hidden="true">0{i+1}</div>
+              <div>
+                <h3 class="approach-row__title">{item.title}</h3>
+                <p class="approach-row__body">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Vizyonumuz ve Farkımız -->
+    <section class="section" aria-labelledby="about-vision-title">
+      <div class="container">
+        <div class="section-title-group reveal">
+          <span class="section-label">Vizyon</span>
+          <h2 id="about-vision-title">{t('about.vision.title')}</h2>
+        </div>
+        <div class="vision-cards reveal">
+          {[
+            { title: t('about.vision.integrated.title'), body: t('about.vision.integrated.body') },
+            { title: t('about.vision.software.title'),   body: t('about.vision.software.body') },
+            { title: t('about.vision.msp.title'),        body: t('about.vision.msp.body') },
+          ].map(card => (
+            <div class="vision-card">
+              <span class="vision-card__accent" aria-hidden="true"></span>
+              <h3 class="vision-card__title">{card.title}</h3>
+              <p class="vision-card__body">{card.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .page-hero {
+    padding: 7rem 0 4rem;
+    background: linear-gradient(180deg, var(--color-bg-3) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
+  .page-hero__inner h1 { margin-top: 0.25rem; }
+  .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
+
+  .about-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-intro { color: var(--color-text); font-size: 1.05rem; line-height: 1.8; }
+  .about-story__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+  .stat-card:hover { border-color: rgba(0,200,200,0.3); box-shadow: 0 0 24px var(--color-glow); }
+  .stat-card__icon { font-size: 1.5rem; color: var(--color-teal); }
+  .stat-card__label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+
+  .approach-rows { display: flex; flex-direction: column; gap: 1.5rem; }
+  .approach-row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1.75rem 2rem;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition);
+  }
+  .approach-row:hover { border-color: rgba(0,200,200,0.3); }
+  .approach-row__num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-teal);
+    opacity: 0.4;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+  .approach-row__title { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .approach-row__body  { color: var(--color-text-muted); font-size: 0.93rem; }
+
+  .vision-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .vision-card {
+    position: relative;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  }
+  .vision-card:hover { transform: translateY(-4px); box-shadow: 0 0 32px var(--color-glow); border-color: rgba(0,200,200,0.3); }
+  .vision-card__accent {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--color-teal), var(--color-blue));
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .vision-card__title { font-size: 1.05rem; margin-bottom: 0.75rem; }
+  .vision-card__body  { color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.65; }
+
+  @media (max-width: 900px) {
+    .about-story { grid-template-columns: 1fr; gap: 2.5rem; }
+    .vision-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .about-story__stats { grid-template-columns: 1fr; }
+    .approach-row { flex-direction: column; gap: 0.75rem; }
+  }
+</style>

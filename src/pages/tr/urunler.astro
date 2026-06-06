@@ -1,0 +1,130 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+const contactHref = `/${lang}/iletisim`;
+---
+
+<Base title={t('nav.products')} description="GİTA Teknoloji özel yazılımları: Passeidon, Zabbix & Grafana, Proxmox+Veeam, Prometheus, QR Yoklama." lang={lang}>
+  <Nav lang={lang} currentPath={currentPath} />
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="section-label">{t('nav.products')}</span>
+        <h1>{t('products.title')}</h1>
+        <p class="page-hero__sub">{t('products.subtitle')}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container products-list">
+        <ProductCard
+          name={t('products.passeidon.name')}
+          tagline={t('products.passeidon.tagline')}
+          description={t('products.passeidon.description')}
+          features={[
+            t('products.passeidon.feature1.title'),
+            t('products.passeidon.feature2.title'),
+            t('products.passeidon.feature3.title'),
+            t('products.passeidon.feature4.title'),
+            t('products.passeidon.adv1.title') + ': ' + t('products.passeidon.adv1.body'),
+            t('products.passeidon.adv2.title') + ': ' + t('products.passeidon.adv2.body'),
+            t('products.passeidon.adv3.title') + ': ' + t('products.passeidon.adv3.body'),
+          ]}
+          cta={t('products.passeidon.cta')}
+          ctaHref={contactHref}
+          flip={false}
+        />
+
+        <ProductCard
+          name={t('products.zabbix.name')}
+          tagline={t('products.zabbix.tagline')}
+          description={t('products.zabbix.description')}
+          features={[
+            t('products.zabbix.zabbix.realtime'),
+            t('products.zabbix.zabbix.alerts'),
+            t('products.zabbix.zabbix.scale'),
+            t('products.zabbix.grafana.dashboards'),
+            t('products.zabbix.grafana.multi'),
+            t('products.zabbix.gita.analysis'),
+            t('products.zabbix.gita.install'),
+            t('products.zabbix.gita.support'),
+          ]}
+          cta={t('products.zabbix.cta')}
+          ctaHref={contactHref}
+          flip={true}
+        />
+
+        <ProductCard
+          name={t('products.proxmox.name')}
+          tagline={t('products.proxmox.tagline')}
+          description={t('products.proxmox.description')}
+          features={[
+            t('products.proxmox.why1.title') + ': ' + t('products.proxmox.why1.body'),
+            t('products.proxmox.why2.title') + ': ' + t('products.proxmox.why2.body'),
+            t('products.proxmox.why3.title') + ': ' + t('products.proxmox.why3.body'),
+            t('products.proxmox.why4.title') + ': ' + t('products.proxmox.why4.body'),
+            t('products.proxmox.eng1.title'),
+            t('products.proxmox.eng2.title'),
+          ]}
+          cta={t('products.proxmox.cta')}
+          ctaHref={contactHref}
+          flip={false}
+        />
+
+        <ProductCard
+          name={t('products.prometheus.name')}
+          tagline={t('products.prometheus.tagline')}
+          description={t('products.prometheus.description')}
+          features={[
+            t('products.prometheus.why1.title'),
+            t('products.prometheus.why2.title'),
+            t('products.prometheus.why3.title'),
+            t('products.prometheus.why4.title'),
+            t('products.prometheus.use1.title'),
+            t('products.prometheus.use2.title'),
+            t('products.prometheus.use3.title'),
+          ]}
+          cta={t('products.prometheus.cta')}
+          ctaHref={contactHref}
+          flip={true}
+        />
+
+        <ProductCard
+          name={t('products.qr.name')}
+          tagline={t('products.qr.tagline')}
+          description={t('products.qr.description')}
+          features={[
+            t('products.qr.why1.title') + ': ' + t('products.qr.why1.body'),
+            t('products.qr.why2.title') + ': ' + t('products.qr.why2.body'),
+            t('products.qr.why3.title') + ': ' + t('products.qr.why3.body'),
+            t('products.qr.why4.title') + ': ' + t('products.qr.why4.body'),
+            t('products.qr.sol1.title'),
+            t('products.qr.sol2.title'),
+            t('products.qr.sol3.title'),
+          ]}
+          cta={t('products.qr.cta')}
+          ctaHref={contactHref}
+          flip={false}
+        />
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .page-hero { padding: 7rem 0 4rem; background: linear-gradient(180deg, var(--color-bg-3) 0%, var(--color-bg) 100%); border-bottom: 1px solid var(--color-border); }
+  .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
+  .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
+  .products-list { display: flex; flex-direction: column; gap: 2.5rem; }
+</style>

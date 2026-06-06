@@ -1,0 +1,91 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  items: string[];
+  id?: string;
+}
+const { title, description, items, id } = Astro.props;
+---
+
+<div class="solution-card reveal" id={id}>
+  <span class="solution-card__accent" aria-hidden="true"></span>
+  <h3 class="solution-card__title">{title}</h3>
+  <p class="solution-card__desc">{description}</p>
+  {items.length > 0 && (
+    <ul class="solution-card__list">
+      {items.map(item => (
+        <li class="solution-card__item">
+          <span class="solution-card__bullet" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
+<style>
+  .solution-card {
+    position: relative;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  }
+
+  .solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 32px var(--color-glow);
+    border-color: rgba(0, 200, 200, 0.3);
+  }
+
+  .solution-card__accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-teal), var(--color-blue));
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .solution-card__title {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .solution-card__desc {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .solution-card__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .solution-card__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .solution-card__bullet {
+    color: var(--color-teal);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+</style>

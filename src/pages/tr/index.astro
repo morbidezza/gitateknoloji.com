@@ -1,0 +1,198 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import SolutionCard from '../../components/SolutionCard.astro';
+import PartnerGrid from '../../components/PartnerGrid.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const partners = ['HPE','Dell','IBM','Cisco','Juniper','Citrix','Fortinet','CheckPoint','Proxmox','XenServer','Veeam','Acronis','NetScaler','Microsoft','Cloudflare'];
+
+const mspIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`;
+const swIcon  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
+const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`;
+---
+
+<Base title="Ana Sayfa" description="GİTA Teknoloji – Geleceği Planlayan Stratejik Çözüm Ortağınız. MSP, yazılım danışmanlığı ve altyapı çözümleri." lang={lang}>
+  <Nav lang={lang} currentPath={currentPath} />
+
+  <main id="main-content">
+    <HeroSection lang={lang} />
+
+    <!-- Hizmetler Özeti -->
+    <section class="section" aria-labelledby="home-services-title">
+      <div class="container">
+        <div class="section-title-group reveal">
+          <span class="section-label">{t('nav.services')}</span>
+          <h2 id="home-services-title">{t('services.title')}</h2>
+          <p>{t('services.subtitle')}</p>
+        </div>
+        <div class="cards-grid">
+          <ServiceCard
+            icon={mspIcon}
+            title={t('services.msp.title')}
+            description={t('services.msp.intro')}
+            href={`/${lang}/hizmetler#msp`}
+          />
+          <ServiceCard
+            icon={swIcon}
+            title={t('services.software.title')}
+            description={t('services.software.intro')}
+            href={`/${lang}/hizmetler#yazilim`}
+          />
+          <ServiceCard
+            icon={rndIcon}
+            title={t('services.rnd.title')}
+            description={t('services.rnd.intro')}
+            href={`/${lang}/hizmetler#arge`}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Çözümler Özeti -->
+    <section class="section section--alt" aria-labelledby="home-solutions-title">
+      <div class="container">
+        <div class="section-title-group reveal">
+          <span class="section-label">{t('nav.solutions')}</span>
+          <h2 id="home-solutions-title">{t('solutions.title')}</h2>
+          <p>{t('solutions.subtitle')}</p>
+        </div>
+        <div class="cards-grid cards-grid--4">
+          <SolutionCard
+            title={t('solutions.lowvoltage.title')}
+            description={t('solutions.lowvoltage.intro')}
+            items={[t('solutions.lowvoltage.security.title'), t('solutions.lowvoltage.fire.title'), t('solutions.lowvoltage.data.title')]}
+          />
+          <SolutionCard
+            title={t('solutions.network.title')}
+            description={t('solutions.network.intro')}
+            items={[t('solutions.network.wired.title'), t('solutions.network.sdwan.title'), t('solutions.network.waf.title')]}
+          />
+          <SolutionCard
+            title={t('solutions.systems.title')}
+            description={t('solutions.systems.intro')}
+            items={[t('solutions.systems.server.title'), t('solutions.systems.cloud.title'), t('solutions.systems.devops.title')]}
+          />
+          <SolutionCard
+            title={t('solutions.security.title')}
+            description={t('solutions.security.intro')}
+            items={[t('solutions.security.network.title'), t('solutions.security.mdm.title'), t('solutions.security.edr.title')]}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Özel Yazılımlar Teaser -->
+    <section class="section" aria-labelledby="home-products-title">
+      <div class="container products-teaser">
+        <div class="products-teaser__text reveal">
+          <span class="section-label">{t('nav.products')}</span>
+          <h2 id="home-products-title">{t('products.title')}</h2>
+          <p>{t('products.subtitle')}</p>
+          <a href={`/${lang}/urunler`} class="btn-primary" style="margin-top:1.5rem">
+            {lang === 'tr' ? 'Tüm Ürünleri Keşfet' : 'Explore Products'}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <ul class="products-teaser__list reveal">
+          {['Passeidon', 'Zabbix & Grafana', 'Proxmox + Veeam / Acronis', 'Prometheus', 'GİTA QR Yoklama'].map(p => (
+            <li class="products-teaser__item">
+              <span class="products-teaser__dot" aria-hidden="true"></span>
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Çözüm Ortakları -->
+    <section class="section section--alt" aria-labelledby="home-partners-title">
+      <div class="container">
+        <div class="section-title-group reveal">
+          <span class="section-label">{t('nav.partners')}</span>
+          <h2 id="home-partners-title">{t('partners.title')}</h2>
+          <p>{t('partners.subtitle')}</p>
+        </div>
+        <PartnerGrid partners={partners} />
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section cta-banner" aria-labelledby="home-cta-title">
+      <div class="container cta-banner__inner reveal">
+        <div>
+          <h2 id="home-cta-title">{t('home.cta.title')}</h2>
+          <p>{t('home.cta.sub')}</p>
+        </div>
+        <a href={`/${lang}/iletisim`} class="btn-primary cta-banner__btn">{t('home.cta.button')}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .cards-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+  .products-teaser {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .products-teaser__text p { color: var(--color-text-muted); margin-top: 0.75rem; }
+  .products-teaser__list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .products-teaser__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-2);
+    transition: color var(--transition), border-color var(--transition);
+  }
+  .products-teaser__item:hover { color: var(--color-teal); border-color: rgba(0,200,200,0.3); }
+  .products-teaser__dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--color-teal); flex-shrink: 0;
+  }
+
+  .cta-banner { background: linear-gradient(135deg, rgba(0,200,200,0.06), rgba(26,79,160,0.08)); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .cta-banner__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .cta-banner__inner h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .cta-banner__inner p { color: var(--color-text-muted); margin-top: 0.5rem; }
+  .cta-banner__btn { flex-shrink: 0; }
+
+  @media (max-width: 1024px) { .cards-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .cards-grid--4 { grid-template-columns: 1fr; }
+    .products-teaser { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-banner__inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

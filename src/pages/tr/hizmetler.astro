@@ -1,0 +1,213 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<Base title={t('nav.services')} description="GİTA Teknoloji hizmetleri: MSP, yazılım danışmanlığı ve geliştirme, stratejik Ar-Ge ve inovasyon." lang={lang}>
+  <Nav lang={lang} currentPath={currentPath} />
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="section-label">{t('nav.services')}</span>
+        <h1>{t('services.title')}</h1>
+        <p class="page-hero__sub">{t('services.subtitle')}</p>
+      </div>
+    </section>
+
+    <!-- 1. MSP -->
+    <section class="section" id="msp" aria-labelledby="msp-title">
+      <div class="container">
+        <div class="service-block reveal">
+          <div class="service-block__header">
+            <span class="service-block__num" aria-hidden="true">01</span>
+            <div>
+              <h2 id="msp-title">{t('services.msp.title')}</h2>
+              <p class="service-block__intro">{t('services.msp.intro')}</p>
+            </div>
+          </div>
+          <div class="service-items">
+            {[
+              { title: t('services.msp.continuous.title'), body: t('services.msp.continuous.body') },
+              { title: t('services.msp.monitoring.title'), body: t('services.msp.monitoring.body') },
+              { title: t('services.msp.scalable.title'),   body: t('services.msp.scalable.body') },
+            ].map(item => (
+              <div class="service-item">
+                <h3 class="service-item__title">{item.title}</h3>
+                <p class="service-item__body">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Yazılım Danışmanlığı -->
+    <section class="section section--alt" id="yazilim" aria-labelledby="sw-title">
+      <div class="container">
+        <div class="service-block reveal">
+          <div class="service-block__header">
+            <span class="service-block__num" aria-hidden="true">02</span>
+            <div>
+              <h2 id="sw-title">{t('services.software.title')}</h2>
+              <p class="service-block__intro">{t('services.software.intro')}</p>
+            </div>
+          </div>
+          <div class="service-items">
+            {[
+              { title: t('services.software.modernization.title'), body: t('services.software.modernization.body') },
+              { title: t('services.software.apifirst.title'),      body: t('services.software.apifirst.body') },
+              { title: t('services.software.custom.title'),        body: t('services.software.custom.body') },
+            ].map(item => (
+              <div class="service-item">
+                <h3 class="service-item__title">{item.title}</h3>
+                <p class="service-item__body">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sub-sections -->
+        <div class="sub-sections reveal">
+          <div class="sub-section">
+            <h3 class="sub-section__title">{t('services.custom.title')}</h3>
+            <p class="sub-section__intro">{t('services.custom.intro')}</p>
+            <div class="sub-items">
+              {[
+                { title: t('services.custom.e2e.title'),     body: t('services.custom.e2e.body') },
+                { title: t('services.custom.modules.title'), body: t('services.custom.modules.body') },
+                { title: t('services.custom.saas.title'),    body: t('services.custom.saas.body') },
+              ].map(i => (
+                <div class="sub-item">
+                  <h4 class="sub-item__title">{i.title}</h4>
+                  <p class="sub-item__body">{i.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="sub-section">
+            <h3 class="sub-section__title">{t('services.arch.title')}</h3>
+            <p class="sub-section__intro">{t('services.arch.intro')}</p>
+            <div class="sub-items">
+              {[
+                { title: t('services.arch.design.title'), body: t('services.arch.design.body') },
+                { title: t('services.arch.stack.title'),  body: t('services.arch.stack.body') },
+                { title: t('services.arch.perf.title'),   body: t('services.arch.perf.body') },
+              ].map(i => (
+                <div class="sub-item">
+                  <h4 class="sub-item__title">{i.title}</h4>
+                  <p class="sub-item__body">{i.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="sub-section">
+            <h3 class="sub-section__title">{t('services.partner.title')}</h3>
+            <p class="sub-section__intro">{t('services.partner.intro')}</p>
+            <div class="sub-items">
+              {[
+                { title: t('services.partner.vendor.title'), body: t('services.partner.vendor.body') },
+                { title: t('services.partner.isv.title'),    body: t('services.partner.isv.body') },
+                { title: t('services.partner.oem.title'),    body: t('services.partner.oem.body') },
+              ].map(i => (
+                <div class="sub-item">
+                  <h4 class="sub-item__title">{i.title}</h4>
+                  <p class="sub-item__body">{i.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Ar-Ge -->
+    <section class="section" id="arge" aria-labelledby="rnd-title">
+      <div class="container">
+        <div class="service-block reveal">
+          <div class="service-block__header">
+            <span class="service-block__num" aria-hidden="true">03</span>
+            <div>
+              <h2 id="rnd-title">{t('services.rnd.title')}</h2>
+              <p class="service-block__intro">{t('services.rnd.intro')}</p>
+            </div>
+          </div>
+          <div class="service-items">
+            {[
+              { title: t('services.rnd.patent.title'),  body: t('services.rnd.patent.body') },
+              { title: t('services.rnd.tubitak.title'), body: t('services.rnd.tubitak.body') },
+              { title: t('services.rnd.poc.title'),     body: t('services.rnd.poc.body') },
+              { title: t('services.rnd.mvp.title'),     body: t('services.rnd.mvp.body') },
+            ].map(item => (
+              <div class="service-item">
+                <h3 class="service-item__title">{item.title}</h3>
+                <p class="service-item__body">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="container cta-section__inner reveal">
+        <h2>Projenizi birlikte planlayalım</h2>
+        <p style="color:var(--color-text-muted);margin-top:0.5rem">Teknoloji ihtiyaçlarınız için uzman ekibimizle iletişime geçin.</p>
+        <a href={`/${lang}/iletisim`} class="btn-primary" style="margin-top:1.5rem">{t('home.cta.button')}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .page-hero { padding: 7rem 0 4rem; background: linear-gradient(180deg, var(--color-bg-3) 0%, var(--color-bg) 100%); border-bottom: 1px solid var(--color-border); }
+  .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
+  .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
+
+  .service-block { display: flex; flex-direction: column; gap: 2.5rem; }
+  .service-block__header { display: flex; gap: 2rem; align-items: flex-start; }
+  .service-block__num { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--color-teal); opacity: 0.2; flex-shrink: 0; line-height: 1; margin-top: 0.25rem; }
+  .service-block__intro { color: var(--color-text-muted); font-size: 1rem; margin-top: 0.75rem; max-width: 70ch; }
+
+  .service-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-item {
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-teal);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    transition: box-shadow var(--transition);
+  }
+  .service-item:hover { box-shadow: 0 0 24px var(--color-glow); }
+  .service-item__title { font-size: 1rem; margin-bottom: 0.6rem; }
+  .service-item__body  { color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.65; }
+
+  .sub-sections { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--color-border); }
+  .sub-section__title { font-size: 1.3rem; margin-bottom: 0.6rem; }
+  .sub-section__intro { color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .sub-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .sub-item { padding: 1.25rem; background: var(--color-bg-3); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+  .sub-item__title { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .sub-item__body  { color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.6; }
+
+  .cta-section { background: linear-gradient(135deg, rgba(0,200,200,0.05), rgba(26,79,160,0.07)); border-top: 1px solid var(--color-border); }
+  .cta-section__inner { display: flex; flex-direction: column; }
+
+  @media (max-width: 900px) {
+    .service-items { grid-template-columns: 1fr; }
+    .sub-items { grid-template-columns: 1fr; }
+    .service-block__header { flex-direction: column; gap: 0.5rem; }
+  }
+</style>

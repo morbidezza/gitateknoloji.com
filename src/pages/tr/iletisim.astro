@@ -1,0 +1,101 @@
+---
+export const prerender = true;
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<Base title={t('nav.contact')} description="GİTA Teknoloji ile iletişime geçin. İstanbul ve Ankara ofislerimizden destek alın." lang={lang}>
+  <Nav lang={lang} currentPath={currentPath} />
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <span class="section-label">{t('nav.contact')}</span>
+        <h1>{t('contact.title')}</h1>
+        <p class="page-hero__sub">{t('contact.subtitle')}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+        <!-- Left: info -->
+        <div class="contact-info reveal">
+          <div class="contact-info__email">
+            <p class="contact-info__label">{t('contact.email_label')}</p>
+            <a href="mailto:info@gitateknoloji.com" class="contact-info__val">info@gitateknoloji.com</a>
+          </div>
+
+          <div class="contact-offices">
+            <div class="office">
+              <h3 class="office__title">{t('contact.istanbul')}</h3>
+              <p class="office__addr">{t('contact.location_placeholder')}</p>
+            </div>
+            <div class="office">
+              <h3 class="office__title">{t('contact.ankara')}</h3>
+              <p class="office__addr">{t('contact.location_placeholder')}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="contact-form-wrap reveal">
+          <ContactForm lang={lang} />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .page-hero { padding: 7rem 0 4rem; background: linear-gradient(180deg, var(--color-bg-3) 0%, var(--color-bg) 100%); border-bottom: 1px solid var(--color-border); }
+  .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
+  .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 2.5rem; }
+  .contact-info__label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    margin-bottom: 0.4rem;
+  }
+  .contact-info__val {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    transition: color var(--transition);
+  }
+  .contact-info__val:hover { color: var(--color-teal); }
+
+  .contact-offices { display: flex; flex-direction: column; gap: 1.5rem; }
+  .office {
+    padding: 1.25rem;
+    background: var(--color-bg-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+  .office__title { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .office__addr  { color: var(--color-text-muted); font-size: 0.88rem; font-style: italic; }
+
+  @media (max-width: 768px) {
+    .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+</style>
