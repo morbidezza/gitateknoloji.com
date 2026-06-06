@@ -3,13 +3,8 @@ export const prerender = true;
 ---
 <html>
   <head>
-    <script is:inline>
-      const lang = navigator.language?.startsWith('tr') ? 'tr' : 'en';
-      window.location.replace('/' + lang + '/');
-    </script>
-    <noscript>
-      <meta http-equiv="refresh" content="0;url=/tr/" />
-    </noscript>
+    <meta http-equiv="refresh" content="0;url=/tr/" />
+    <title>GİTA Teknoloji</title>
   </head>
   <body></body>
 </html>
