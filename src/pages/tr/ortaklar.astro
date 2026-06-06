@@ -19,8 +19,7 @@ const partners = ['HPE','Dell','IBM','Cisco','Juniper','Citrix','Fortinet','Chec
   <main id="main-content">
     <section class="page-hero">
       <div class="container page-hero__inner">
-        <span class="section-label">{t('nav.partners')}</span>
-        <h1>{t('partners.title')}</h1>
+        <h1 class="page-title">{t('partners.title')}</h1>
         <p class="page-hero__sub">{t('partners.subtitle')}</p>
       </div>
     </section>
@@ -28,10 +27,6 @@ const partners = ['HPE','Dell','IBM','Cisco','Juniper','Citrix','Fortinet','Chec
     <section class="section">
       <div class="container">
         <PartnerGrid partners={partners} />
-
-        <div class="partners-note reveal">
-          <p>Partner logoları yakında eklenecektir. Çözüm ortaklıkları ve yetkili dağıtıcılık bilgileri için <a href={`/${lang}/iletisim`}>iletişime geçin</a>.</p>
-        </div>
       </div>
     </section>
   </main>
@@ -44,15 +39,4 @@ const partners = ['HPE','Dell','IBM','Cisco','Juniper','Citrix','Fortinet','Chec
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
 
-  .partners-note {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background: var(--color-bg-2);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    font-size: 0.92rem;
-    color: var(--color-text-muted);
-  }
-  .partners-note a { color: var(--color-teal); }
-  .partners-note a:hover { color: var(--color-blue-mid); }
 </style>
