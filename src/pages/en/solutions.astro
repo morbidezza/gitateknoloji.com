@@ -11,13 +11,13 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 const anchors = [
-  { id: 'low-voltage',      label: t('solutions.lowvoltage.title') },
   { id: 'network',          label: t('solutions.network.title') },
   { id: 'systems',          label: t('solutions.systems.title') },
   { id: 'cloudflare',       label: 'Cloudflare' },
   { id: 'cyber-security',   label: t('solutions.security.title') },
   { id: 'infra-software',   label: t('solutions.infrasoftware.title') },
   { id: 'ai-ml',            label: t('solutions.ai.title') },
+  { id: 'low-voltage',      label: t('solutions.lowvoltage.title') },
 ];
 ---
 
@@ -42,19 +42,6 @@ const anchors = [
       </aside>
 
       <div class="solutions-content">
-        <section id="low-voltage" class="sol-section" aria-labelledby="low-voltage-title">
-          <div class="sol-section__header reveal">
-            <span class="section-label">{t('solutions.lowvoltage.title')}</span>
-            <h2 id="low-voltage-title">{t('solutions.lowvoltage.title')}</h2>
-            <p>{t('solutions.lowvoltage.intro')}</p>
-          </div>
-          <div class="sol-cards reveal">
-            <SolutionCard title={t('solutions.lowvoltage.security.title')} description={t('solutions.lowvoltage.security.intro')} items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]} />
-            <SolutionCard title={t('solutions.lowvoltage.fire.title')}     description={t('solutions.lowvoltage.fire.intro')}     items={[t('solutions.lowvoltage.fire.compliance'), t('solutions.lowvoltage.fire.detection'), t('solutions.lowvoltage.fire.suppression'), t('solutions.lowvoltage.fire.e2e')]} />
-            <SolutionCard title={t('solutions.lowvoltage.data.title')}     description={t('solutions.lowvoltage.data.intro')}     items={[t('solutions.lowvoltage.data.design'), t('solutions.lowvoltage.data.quality'), t('solutions.lowvoltage.data.cert'), t('solutions.lowvoltage.data.sustainable')]} />
-          </div>
-        </section>
-
         <section id="network" class="sol-section" aria-labelledby="network-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.network.title')}</span>
@@ -142,6 +129,19 @@ const anchors = [
             <SolutionCard title={t('solutions.ai.automation.title')} description={t('solutions.ai.automation.body')} items={[]} />
           </div>
         </section>
+
+        <section id="low-voltage" class="sol-section" aria-labelledby="low-voltage-title">
+          <div class="sol-section__header reveal">
+            <span class="section-label">{t('solutions.lowvoltage.title')}</span>
+            <h2 id="low-voltage-title">{t('solutions.lowvoltage.title')}</h2>
+            <p>{t('solutions.lowvoltage.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard title={t('solutions.lowvoltage.security.title')} description={t('solutions.lowvoltage.security.intro')} items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]} />
+            <SolutionCard title={t('solutions.lowvoltage.fire.title')}     description={t('solutions.lowvoltage.fire.intro')}     items={[t('solutions.lowvoltage.fire.compliance'), t('solutions.lowvoltage.fire.detection'), t('solutions.lowvoltage.fire.suppression'), t('solutions.lowvoltage.fire.e2e')]} />
+            <SolutionCard title={t('solutions.lowvoltage.data.title')}     description={t('solutions.lowvoltage.data.intro')}     items={[t('solutions.lowvoltage.data.design'), t('solutions.lowvoltage.data.quality'), t('solutions.lowvoltage.data.cert'), t('solutions.lowvoltage.data.sustainable')]} />
+          </div>
+        </section>
       </div>
     </div>
   </main>
@@ -150,7 +150,7 @@ const anchors = [
 </Base>
 
 <style>
-  .page-hero { padding: 7rem 0 4rem; background: linear-gradient(180deg, var(--color-bg-3) 0%, var(--color-bg) 100%); border-bottom: 1px solid var(--color-border); }
+  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; }
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
   .solutions-layout { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; padding-top: 3rem; padding-bottom: 3rem; align-items: start; }
