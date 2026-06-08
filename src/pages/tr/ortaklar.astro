@@ -10,10 +10,10 @@ const lang = 'tr';
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
-const partners = ['HPE','Dell','IBM','Cisco','Juniper','Citrix','Fortinet','CheckPoint','Proxmox','XenServer','Veeam','Acronis','NetScaler','Microsoft','Cloudflare'];
+const partners = ['HPE','VM Essentials','Proxmox','XenServer','Cloudflare','Veeam','Acronis','Citrix','NetScaler','Microsoft','Azure','AWS','Dell','IBM','Cisco','Juniper','LogSenth'];
 ---
 
-<Base title={t('nav.partners')} description="GİTA Teknoloji çözüm ortakları: HPE, Dell, IBM, Cisco, Fortinet, Microsoft ve daha fazlası." lang={lang}>
+<Base title={t('nav.partners')} description="GİTA Teknoloji çözüm ortakları: HPE, Proxmox, Cloudflare, Veeam, Microsoft, Azure, AWS ve daha fazlası." lang={lang}>
   <Nav lang={lang} currentPath={currentPath} />
 
   <main id="main-content">

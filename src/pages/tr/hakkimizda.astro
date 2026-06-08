@@ -29,19 +29,19 @@ const currentPath = Astro.url.pathname;
           <span class="section-label">{t('about.strategy.title')}</span>
           <h2 id="about-story-title">{t('about.title')}</h2>
           <p class="about-intro">{t('about.intro')}</p>
-          <p style="margin-top:1rem;color:var(--color-text-muted)">{t('about.strategy.body')}</p>
-          <p style="margin-top:1rem;color:var(--color-text-muted)">{t('about.closing')}</p>
+          <p style="margin-top:1rem;">{t('about.strategy.body')}</p>
+          <p style="margin-top:1rem;">{t('about.closing')}</p>
         </div>
         <div class="about-story__stats reveal">
           {[
-            { label: t('about.stat.experience'), icon: '⟳' },
-            { label: t('about.stat.founded'),    icon: '◈' },
-            { label: t('about.stat.msp'),        icon: '◎' },
-            { label: t('about.stat.patent'),     icon: '◆' },
+            { label: t('about.stat.experience'), sub: null,                      icon: '⟳' },
+            { label: t('about.stat.msp'),        sub: t('about.stat.msp.sub'),   icon: '◎' },
+            { label: t('about.stat.customer'),   sub: null,                      icon: '◆' },
           ].map(s => (
             <div class="stat-card">
               <span class="stat-card__icon" aria-hidden="true">{s.icon}</span>
               <span class="stat-card__label">{s.label}</span>
+              {s.sub && <span class="stat-card__sub">{s.sub}</span>}
             </div>
           ))}
         </div>
@@ -116,7 +116,9 @@ const currentPath = Astro.url.pathname;
     gap: 4rem;
     align-items: start;
   }
-  .about-intro { color: var(--color-text); font-size: 1.05rem; line-height: 1.8; }
+  .about-intro { color: #ffffff; font-size: 1.05rem; line-height: 1.8; }
+  .about-story__text p { color: #ffffff; }
+  .stat-card__sub { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 0.15rem; }
   .about-story__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;

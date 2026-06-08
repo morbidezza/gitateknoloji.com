@@ -30,6 +30,24 @@ const contactHref = `/${lang}/contact`;
         <ProductCard name={t('products.proxmox.name')} tagline={t('products.proxmox.tagline')} description={t('products.proxmox.description')} features={[t('products.proxmox.why1.title') + ': ' + t('products.proxmox.why1.body'), t('products.proxmox.why2.title') + ': ' + t('products.proxmox.why2.body'), t('products.proxmox.why3.title') + ': ' + t('products.proxmox.why3.body'), t('products.proxmox.why4.title') + ': ' + t('products.proxmox.why4.body'), t('products.proxmox.eng1.title'), t('products.proxmox.eng2.title')]} cta={t('products.proxmox.cta')} ctaHref={contactHref} flip={false} />
         <ProductCard name={t('products.prometheus.name')} tagline={t('products.prometheus.tagline')} description={t('products.prometheus.description')} features={[t('products.prometheus.why1.title'), t('products.prometheus.why2.title'), t('products.prometheus.why3.title'), t('products.prometheus.why4.title'), t('products.prometheus.use1.title'), t('products.prometheus.use2.title'), t('products.prometheus.use3.title')]} cta={t('products.prometheus.cta')} ctaHref={contactHref} flip={true} />
         <ProductCard name={t('products.qr.name')} tagline={t('products.qr.tagline')} description={t('products.qr.description')} features={[t('products.qr.why1.title') + ': ' + t('products.qr.why1.body'), t('products.qr.why2.title') + ': ' + t('products.qr.why2.body'), t('products.qr.why3.title') + ': ' + t('products.qr.why3.body'), t('products.qr.why4.title') + ': ' + t('products.qr.why4.body'), t('products.qr.sol1.title'), t('products.qr.sol2.title'), t('products.qr.sol3.title')]} cta={t('products.qr.cta')} ctaHref={contactHref} flip={false} />
+        <div class="opensddc-badges">
+          <span class="oss-badge">Open Source</span>
+          <span class="oss-badge oss-badge--contrib">Active Contributor</span>
+        </div>
+        <ProductCard
+          name={t('products.opensddc.name')}
+          tagline={t('products.opensddc.tagline')}
+          description={t('products.opensddc.description')}
+          features={[
+            t('products.opensddc.feature1.title') + ': ' + t('products.opensddc.feature1.body'),
+            t('products.opensddc.feature2.title') + ': ' + t('products.opensddc.feature2.body'),
+            t('products.opensddc.feature3.title') + ': ' + t('products.opensddc.feature3.body'),
+            t('products.opensddc.feature4.title') + ': ' + t('products.opensddc.feature4.body'),
+          ]}
+          cta={t('products.opensddc.cta')}
+          ctaHref="https://opensddc.io"
+          flip={true}
+        />
       </div>
     </section>
   </main>
@@ -42,4 +60,7 @@ const contactHref = `/${lang}/contact`;
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
   .products-list { display: flex; flex-direction: column; gap: 2.5rem; }
+  .opensddc-badges { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .oss-badge { display: inline-block; font-size: 0.72rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(0,200,200,0.12); color: var(--color-teal); border: 1px solid rgba(0,200,200,0.3); }
+  .oss-badge--contrib { background: rgba(37,99,235,0.12); color: var(--color-blue-mid); border-color: rgba(37,99,235,0.3); }
 </style>

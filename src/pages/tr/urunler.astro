@@ -114,6 +114,24 @@ const contactHref = `/${lang}/iletisim`;
           ctaHref={contactHref}
           flip={false}
         />
+        <div class="opensddc-badges">
+          <span class="oss-badge">Açık Kaynak</span>
+          <span class="oss-badge oss-badge--contrib">Aktif Geliştirici</span>
+        </div>
+        <ProductCard
+          name={t('products.opensddc.name')}
+          tagline={t('products.opensddc.tagline')}
+          description={t('products.opensddc.description')}
+          features={[
+            t('products.opensddc.feature1.title') + ': ' + t('products.opensddc.feature1.body'),
+            t('products.opensddc.feature2.title') + ': ' + t('products.opensddc.feature2.body'),
+            t('products.opensddc.feature3.title') + ': ' + t('products.opensddc.feature3.body'),
+            t('products.opensddc.feature4.title') + ': ' + t('products.opensddc.feature4.body'),
+          ]}
+          cta={t('products.opensddc.cta')}
+          ctaHref="https://opensddc.io"
+          flip={true}
+        />
       </div>
     </section>
   </main>
@@ -126,4 +144,7 @@ const contactHref = `/${lang}/iletisim`;
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
   .products-list { display: flex; flex-direction: column; gap: 2.5rem; }
+  .opensddc-badges { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .oss-badge { display: inline-block; font-size: 0.72rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 999px; background: rgba(0,200,200,0.12); color: var(--color-teal); border: 1px solid rgba(0,200,200,0.3); }
+  .oss-badge--contrib { background: rgba(37,99,235,0.12); color: var(--color-blue-mid); border-color: rgba(37,99,235,0.3); }
 </style>

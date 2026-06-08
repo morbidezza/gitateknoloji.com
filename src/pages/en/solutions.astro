@@ -14,6 +14,7 @@ const anchors = [
   { id: 'low-voltage',      label: t('solutions.lowvoltage.title') },
   { id: 'network',          label: t('solutions.network.title') },
   { id: 'systems',          label: t('solutions.systems.title') },
+  { id: 'cloudflare',       label: 'Cloudflare' },
   { id: 'cyber-security',   label: t('solutions.security.title') },
   { id: 'infra-software',   label: t('solutions.infrasoftware.title') },
   { id: 'ai-ml',            label: t('solutions.ai.title') },
@@ -84,6 +85,19 @@ const anchors = [
               { title: t('solutions.systems.linux.title'),   body: t('solutions.systems.linux.body') },
               { title: t('solutions.systems.devops.title'),  body: t('solutions.systems.devops.body') },
             ].map(item => (<SolutionCard title={item.title} description={item.body} items={[]} />))}
+          </div>
+        </section>
+
+        <section id="cloudflare" class="sol-section" aria-labelledby="cloudflare-title">
+          <div class="sol-section__header reveal">
+            <h2 id="cloudflare-title">{t('solutions.cloudflare.title')}</h2>
+            <p>{t('solutions.cloudflare.intro')}</p>
+          </div>
+          <div class="sol-cards reveal">
+            <SolutionCard title={t('solutions.cloudflare.workers.title')} description={t('solutions.cloudflare.workers.body')} items={[]} />
+            <SolutionCard title={t('solutions.cloudflare.kv.title')}      description={t('solutions.cloudflare.kv.body')}      items={[]} />
+            <SolutionCard title={t('solutions.cloudflare.r2.title')}      description={t('solutions.cloudflare.r2.body')}      items={[]} />
+            <SolutionCard title={t('solutions.cloudflare.cdn.title')}     description={t('solutions.cloudflare.cdn.body')}     items={[]} />
           </div>
         </section>
 
