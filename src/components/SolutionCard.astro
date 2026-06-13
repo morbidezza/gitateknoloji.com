@@ -4,11 +4,13 @@ interface Props {
   description: string;
   items: string[];
   id?: string;
+  image?: string;
 }
-const { title, description, items, id } = Astro.props;
+const { title, description, items, id, image } = Astro.props;
 ---
 
 <div class="solution-card reveal" id={id}>
+  {image && <img src={image} alt={title} class="solution-card__img" loading="lazy" />}
   <span class="solution-card__accent" aria-hidden="true"></span>
   <h3 class="solution-card__title">{title}</h3>
   <p class="solution-card__desc">{description}</p>
@@ -37,6 +39,14 @@ const { title, description, items, id } = Astro.props;
     padding: 2rem;
     overflow: hidden;
     transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  }
+
+  .solution-card__img {
+    width: calc(100% + 4rem);
+    margin: -2rem -2rem 1rem;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
 
   .solution-card:hover {

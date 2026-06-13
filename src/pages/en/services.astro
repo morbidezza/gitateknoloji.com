@@ -135,6 +135,33 @@ const currentPath = Astro.url.pathname;
       </div>
     </section>
 
+    <!-- 4. Microsoft Solutions -->
+    <section class="section section--alt" id="ms-alliance" aria-labelledby="msalliance-title">
+      <div class="container">
+        <div class="service-block reveal">
+          <div class="service-block__header">
+            <span class="service-block__num" aria-hidden="true">04</span>
+            <div>
+              <h2 id="msalliance-title">{t('services.msalliance.title')}</h2>
+              <p class="service-block__intro">{t('services.msalliance.intro')}</p>
+            </div>
+          </div>
+          <div class="service-items">
+            {[
+              { title: t('services.msalliance.msp.title'),      body: t('services.msalliance.msp.body') },
+              { title: t('services.msalliance.security.title'), body: t('services.msalliance.security.body') },
+              { title: t('services.msalliance.ai.title'),       body: t('services.msalliance.ai.body') },
+            ].map(item => (
+              <div class="service-item">
+                <h3 class="service-item__title">{item.title}</h3>
+                <p class="service-item__body">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section cta-section">
       <div class="container cta-section__inner reveal">
         <h2>Let's plan your project together</h2>

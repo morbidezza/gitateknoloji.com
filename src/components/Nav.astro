@@ -48,7 +48,7 @@ function isActive(href: string) {
   <div class="nav__inner container">
     <!-- Logo -->
     <a href={`/${lang}/`} class="nav__logo" aria-label="GİTA Teknoloji – Ana Sayfa">
-      <img src="/logo.png" alt="GİTA Teknoloji" class="logo-img" width="240" height="72" />
+      <img src="/logo.png" alt="GİTA Teknoloji" class="logo-img" width="360" height="108" />
     </a>
 
     <!-- Desktop links -->
@@ -117,7 +117,7 @@ function isActive(href: string) {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(87, 88, 94, 0.90);
+    background: rgba(138, 139, 145, 0.90);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid transparent;
@@ -132,14 +132,14 @@ function isActive(href: string) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 72px;
+    height: 108px;
     gap: 2rem;
   }
 
   /* Logo */
   .nav__logo { display: flex; align-items: center; flex-shrink: 0; }
   .logo-img {
-    height: 72px;
+    height: 108px;
     width: auto;
     mix-blend-mode: screen;
   }
@@ -305,8 +305,8 @@ function isActive(href: string) {
   }
 
   @media (max-width: 480px) {
-    .nav__inner { height: 60px; }
-    .logo-img { height: 57px; }
+    .nav__inner { height: 90px; }
+    .logo-img { height: 86px; }
   }
 </style>
 

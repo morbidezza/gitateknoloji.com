@@ -80,6 +80,21 @@ const contactHref = `/${lang}/iletisim`;
         />
 
         <ProductCard
+          name={t('products.citrixxen.name')}
+          tagline={t('products.citrixxen.tagline')}
+          description={t('products.citrixxen.description')}
+          features={[
+            t('products.citrixxen.feature1'),
+            t('products.citrixxen.feature2'),
+            t('products.citrixxen.feature3'),
+            t('products.citrixxen.feature4'),
+          ]}
+          cta={t('products.citrixxen.cta')}
+          ctaHref={contactHref}
+          flip={true}
+        />
+
+        <ProductCard
           name={t('products.prometheus.name')}
           tagline={t('products.prometheus.tagline')}
           description={t('products.prometheus.description')}
@@ -140,7 +155,9 @@ const contactHref = `/${lang}/iletisim`;
 </Base>
 
 <style>
-  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; }
+  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; position: relative; background-image: url('/images/hero-products.jpeg'); background-size: cover; background-position: center; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,13,26,0.45), rgba(5,13,26,0.85)); z-index: 0; }
+  .page-hero__inner { position: relative; z-index: 1; }
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
   .products-list { display: flex; flex-direction: column; gap: 2.5rem; }

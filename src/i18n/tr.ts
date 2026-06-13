@@ -93,6 +93,16 @@ export default {
   'services.rnd.mvp.title': 'MVP (Minimum Uygulanabilir Ürün) Tasarımı',
   'services.rnd.mvp.body': 'Yeni iş modellerinizi hızla pazara sunabilmeniz için temel işlevleri optimize edilmiş MVP yapıları inşa ediyoruz.',
 
+  // --- Microsoft Çözümleri ---
+  'services.msalliance.title': 'Microsoft Çözümleri',
+  'services.msalliance.intro': 'GİTA Teknoloji; Microsoft 365, Azure, güvenlik/uyum ve yapay zeka alanlarında uçtan uca kurumsal danışmanlık ve yönetim hizmetleri sunmaktadır.',
+  'services.msalliance.msp.title': 'Microsoft 365 & Azure Yönetimi',
+  'services.msalliance.msp.body': 'Microsoft 365 ve Azure altyapılarının tam kapsamlı yönetimi: Entra ID kimlik güvenliği, Intune cihaz yönetimi, hibrit AD/Exchange geçişi, koşullu erişim politikaları ve 12 aylık All-in-One Business Premium destek modeli.',
+  'services.msalliance.security.title': 'Güvenlik ve Uyum',
+  'services.msalliance.security.body': 'Microsoft Purview DLP, Defender for Endpoint ve Cloud App Security ile çok katmanlı veri, kimlik ve cihaz koruması. Acronis yedekleme, SecurEnvoy MFA ve DigiCert SSL/sertifika yönetimi danışmanlığı.',
+  'services.msalliance.ai.title': 'Yapay Zeka Danışmanlığı',
+  'services.msalliance.ai.body': 'Azure AI Foundry, Copilot Studio ve GitHub Copilot üzerinde strateji, veri hazırlığı ve departman bazlı AI asistan entegrasyonu (HR, IT, Finans, CRM/ERP). KVKK ve GDPR uyumlu AI yönetişimi ve Responsible AI süreçleri.',
+
   // ─── Solutions ────────────────────────────────────────────────────────────
   'solutions.title': 'Çözümler',
   'solutions.subtitle': 'İşletmenizin tüm teknoloji ihtiyaçlarına uçtan uca çözümler sunuyoruz.',
@@ -265,6 +275,16 @@ export default {
   'products.proxmox.eng3.title': 'GİTA Teknoloji Mühendislik ve Destek Hizmetleri',
   'products.proxmox.eng3.body': 'Stratejik kurulum ve konfigürasyondan kesintisiz migrasyona, teknik eğitim ve sürekli destekten operasyonel süreçlere kadar yanınızdayız.',
   'products.proxmox.cta': 'Sanallaştırma çözümleri için iletişime geçin',
+
+  // --- Citrix XenServer ---
+  'products.citrixxen.name': 'Citrix XenServer',
+  'products.citrixxen.tagline': 'Kurumsal Sanallaştırma Platformu',
+  'products.citrixxen.description': 'Citrix XenServer, kritik iş yüklerine yönelik endüstri standardı bir bare-metal hypervisor çözümüdür. Proxmox ile birlikte sunduğumuz bu platform, kurumunuza hypervisor seçim özgürlüğü ve tedarikçi bağımsızlığı sağlar.',
+  'products.citrixxen.feature1': 'Bare-metal hypervisor – donanım üzerinde doğrudan çalışarak maksimum performans',
+  'products.citrixxen.feature2': 'XenCenter ile merkezi VM ve kaynak havuzu yönetimi',
+  'products.citrixxen.feature3': 'Citrix Virtual Apps & Desktops (CVAD) ile yerel entegrasyon',
+  'products.citrixxen.feature4': 'Yüksek erişilebilirlik, canlı göç (live migration) ve kaynak havuzu yönetimi',
+  'products.citrixxen.cta': 'Sanallaştırma Çözümü Talep Et',
 
   'products.prometheus.name': 'Prometheus',
   'products.prometheus.tagline': 'Yeni Nesil Dinamik İzleme ve Uyarı Sistemi',

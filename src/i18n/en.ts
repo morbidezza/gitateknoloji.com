@@ -93,6 +93,16 @@ export default {
   'services.rnd.mvp.title': 'MVP (Minimum Viable Product) Design',
   'services.rnd.mvp.body': 'We build MVP structures with optimized core functions so you can bring new business models to market quickly.',
 
+  // --- Microsoft Solutions ---
+  'services.msalliance.title': 'Microsoft Solutions',
+  'services.msalliance.intro': 'GITA Teknoloji delivers end-to-end enterprise consulting and management across Microsoft 365, Azure, security & compliance, and AI.',
+  'services.msalliance.msp.title': 'Microsoft 365 & Azure Management',
+  'services.msalliance.msp.body': 'Full management of Microsoft 365 and Azure environments: Entra ID identity security, Intune device management, hybrid AD/Exchange migration, conditional access policies, and a 12-month All-in-One Business Premium support model.',
+  'services.msalliance.security.title': 'Security & Compliance',
+  'services.msalliance.security.body': 'Multi-layer data, identity, and device protection via Microsoft Purview DLP, Defender for Endpoint, and Cloud App Security. Advisory services covering Acronis backup, SecurEnvoy MFA, and DigiCert SSL/certificate management.',
+  'services.msalliance.ai.title': 'AI Consulting',
+  'services.msalliance.ai.body': 'Strategy, data preparation, and per-department AI agent deployment (HR, IT, Finance, CRM/ERP) on Azure AI Foundry, Copilot Studio, and GitHub Copilot. KVKK/GDPR-compliant AI governance and Responsible AI practices.',
+
   // ─── Solutions ────────────────────────────────────────────────────────────
   'solutions.title': 'Solutions',
   'solutions.subtitle': 'We offer end-to-end solutions for all your business technology needs.',
@@ -265,6 +275,16 @@ export default {
   'products.proxmox.eng3.title': 'GITA Teknoloji Engineering and Support Services',
   'products.proxmox.eng3.body': 'From strategic installation and configuration to seamless migration, from technical training and continuous support to operational processes — we are by your side.',
   'products.proxmox.cta': 'Contact us for virtualization solutions',
+
+  // --- Citrix XenServer ---
+  'products.citrixxen.name': 'Citrix XenServer',
+  'products.citrixxen.tagline': 'Enterprise Hypervisor Platform',
+  'products.citrixxen.description': 'Citrix XenServer is an industry-standard bare-metal hypervisor built for mission-critical workloads. Offered alongside Proxmox, it gives your organisation hypervisor choice and vendor flexibility.',
+  'products.citrixxen.feature1': 'Bare-metal hypervisor – runs directly on hardware for maximum performance',
+  'products.citrixxen.feature2': 'Centralised VM and resource pool management via XenCenter',
+  'products.citrixxen.feature3': 'Native integration with Citrix Virtual Apps & Desktops (CVAD)',
+  'products.citrixxen.feature4': 'High availability, live migration, and resource pool management',
+  'products.citrixxen.cta': 'Request a Virtualisation Solution',
 
   'products.prometheus.name': 'Prometheus',
   'products.prometheus.tagline': 'Next-Generation Dynamic Monitoring and Alerting System',

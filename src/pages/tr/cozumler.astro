@@ -187,7 +187,9 @@ const anchors = [
 </Base>
 
 <style>
-  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; }
+  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; position: relative; background-image: url('/images/hero-solutions.jpeg'); background-size: cover; background-position: center; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,13,26,0.45), rgba(5,13,26,0.85)); z-index: 0; }
+  .page-hero__inner { position: relative; z-index: 1; }
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
 

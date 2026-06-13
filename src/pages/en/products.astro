@@ -28,6 +28,20 @@ const contactHref = `/${lang}/contact`;
         <ProductCard name={t('products.passeidon.name')} tagline={t('products.passeidon.tagline')} description={t('products.passeidon.description')} features={[t('products.passeidon.feature1.title'), t('products.passeidon.feature2.title'), t('products.passeidon.feature3.title'), t('products.passeidon.feature4.title'), t('products.passeidon.adv1.title') + ': ' + t('products.passeidon.adv1.body'), t('products.passeidon.adv2.title') + ': ' + t('products.passeidon.adv2.body'), t('products.passeidon.adv3.title') + ': ' + t('products.passeidon.adv3.body')]} cta={t('products.passeidon.cta')} ctaHref={contactHref} flip={false} />
         <ProductCard name={t('products.zabbix.name')} tagline={t('products.zabbix.tagline')} description={t('products.zabbix.description')} features={[t('products.zabbix.zabbix.realtime'), t('products.zabbix.zabbix.alerts'), t('products.zabbix.zabbix.scale'), t('products.zabbix.grafana.dashboards'), t('products.zabbix.grafana.multi'), t('products.zabbix.gita.analysis'), t('products.zabbix.gita.install'), t('products.zabbix.gita.support')]} cta={t('products.zabbix.cta')} ctaHref={contactHref} flip={true} />
         <ProductCard name={t('products.proxmox.name')} tagline={t('products.proxmox.tagline')} description={t('products.proxmox.description')} features={[t('products.proxmox.why1.title') + ': ' + t('products.proxmox.why1.body'), t('products.proxmox.why2.title') + ': ' + t('products.proxmox.why2.body'), t('products.proxmox.why3.title') + ': ' + t('products.proxmox.why3.body'), t('products.proxmox.why4.title') + ': ' + t('products.proxmox.why4.body'), t('products.proxmox.eng1.title'), t('products.proxmox.eng2.title')]} cta={t('products.proxmox.cta')} ctaHref={contactHref} flip={false} />
+        <ProductCard
+          name={t('products.citrixxen.name')}
+          tagline={t('products.citrixxen.tagline')}
+          description={t('products.citrixxen.description')}
+          features={[
+            t('products.citrixxen.feature1'),
+            t('products.citrixxen.feature2'),
+            t('products.citrixxen.feature3'),
+            t('products.citrixxen.feature4'),
+          ]}
+          cta={t('products.citrixxen.cta')}
+          ctaHref={contactHref}
+          flip={true}
+        />
         <ProductCard name={t('products.prometheus.name')} tagline={t('products.prometheus.tagline')} description={t('products.prometheus.description')} features={[t('products.prometheus.why1.title'), t('products.prometheus.why2.title'), t('products.prometheus.why3.title'), t('products.prometheus.why4.title'), t('products.prometheus.use1.title'), t('products.prometheus.use2.title'), t('products.prometheus.use3.title')]} cta={t('products.prometheus.cta')} ctaHref={contactHref} flip={true} />
         <ProductCard name={t('products.qr.name')} tagline={t('products.qr.tagline')} description={t('products.qr.description')} features={[t('products.qr.why1.title') + ': ' + t('products.qr.why1.body'), t('products.qr.why2.title') + ': ' + t('products.qr.why2.body'), t('products.qr.why3.title') + ': ' + t('products.qr.why3.body'), t('products.qr.why4.title') + ': ' + t('products.qr.why4.body'), t('products.qr.sol1.title'), t('products.qr.sol2.title'), t('products.qr.sol3.title')]} cta={t('products.qr.cta')} ctaHref={contactHref} flip={false} />
         <div class="opensddc-badges">
@@ -56,7 +70,9 @@ const contactHref = `/${lang}/contact`;
 </Base>
 
 <style>
-  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; }
+  .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; position: relative; background-image: url('/images/hero-products.jpeg'); background-size: cover; background-position: center; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,13,26,0.45), rgba(5,13,26,0.85)); z-index: 0; }
+  .page-hero__inner { position: relative; z-index: 1; }
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }
   .products-list { display: flex; flex-direction: column; gap: 2.5rem; }
