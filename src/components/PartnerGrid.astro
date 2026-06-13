@@ -1,14 +1,26 @@
 ---
+interface Partner {
+  name: string;
+  logo: string;
+  mono?: boolean; // true = Simple Icons white SVG, false = colour logo
+}
 interface Props {
-  partners: string[];
+  partners: Partner[];
 }
 const { partners } = Astro.props;
 ---
 
 <div class="partner-grid">
-  {partners.map(name => (
-    <div class="partner-tile">
-      <span class="partner-tile__name">{name}</span>
+  {partners.map(p => (
+    <div class="partner-tile" title={p.name}>
+      <img
+        src={p.logo}
+        alt={p.name}
+        class={`partner-logo${p.mono !== false ? ' partner-logo--mono' : ' partner-logo--color'}`}
+        loading="lazy"
+        width="120"
+        height="40"
+      />
     </div>
   ))}
 </div>
@@ -16,7 +28,7 @@ const { partners } = Astro.props;
 <style>
   .partner-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1rem;
   }
 
@@ -24,12 +36,12 @@ const { partners } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0.75rem;
+    padding: 1.25rem 1rem;
     background: var(--color-bg-2);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-    min-height: 64px;
+    min-height: 72px;
   }
 
   .partner-tile:hover {
@@ -38,19 +50,34 @@ const { partners } = Astro.props;
     transform: translateY(-2px);
   }
 
-  .partner-tile__name {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--color-text-muted);
-    text-align: center;
-    letter-spacing: 0.03em;
-    transition: color var(--transition);
+  .partner-logo {
+    display: block;
+    max-width: 110px;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: opacity var(--transition);
   }
 
-  .partner-tile:hover .partner-tile__name { color: var(--color-teal); }
+  /* Simple Icons: white SVGs, dim slightly at rest */
+  .partner-logo--mono {
+    opacity: 0.65;
+    filter: brightness(0) invert(1);
+  }
+  .partner-tile:hover .partner-logo--mono {
+    opacity: 1;
+  }
+
+  /* Colour logos: slightly dimmed on dark bg */
+  .partner-logo--color {
+    opacity: 0.80;
+  }
+  .partner-tile:hover .partner-logo--color {
+    opacity: 1;
+  }
 
   @media (max-width: 480px) {
-    .partner-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+    .partner-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
   }
 </style>

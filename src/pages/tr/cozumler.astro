@@ -57,13 +57,11 @@ const anchors = [
               title={t('solutions.network.wired.title')}
               description={t('solutions.network.wired.intro')}
               items={[t('solutions.network.wired.switching'), t('solutions.network.wired.wireless'), t('solutions.network.wired.management')]}
-              image="/images/card-network.jpeg"
             />
             <SolutionCard
               title={t('solutions.network.sdwan.title')}
               description={t('solutions.network.sdwan.intro')}
               items={[t('solutions.network.sdwan.traffic'), t('solutions.network.sdwan.central'), t('solutions.network.sdwan.secure')]}
-              image="/images/card-network-alt.jpeg"
             />
             <SolutionCard
               title={t('solutions.network.waf.title')}
@@ -74,7 +72,7 @@ const anchors = [
         </section>
 
         <!-- 3. Sistem -->
-        <section id="sistem" class="sol-section sol-section--bg" style="background-image: url('/images/bg-server-room.jpeg');" aria-labelledby="sistem-title">
+        <section id="sistem" class="sol-section sol-section--bg" style="background-image: url('/images/banner-enterprise.jpeg');" aria-labelledby="sistem-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.systems.title')}</span>
             <h2 id="sistem-title">{t('solutions.systems.title')}</h2>
@@ -97,7 +95,7 @@ const anchors = [
         </section>
 
         <!-- 4. Cloudflare -->
-        <section id="cloudflare" class="sol-section" aria-labelledby="cloudflare-title">
+        <section id="cloudflare" class="sol-section sol-section--bg" style="background-image: url('/images/banner-cloudflare.jpeg');" aria-labelledby="cloudflare-title">
           <div class="sol-section__header reveal">
             <h2 id="cloudflare-title">{t('solutions.cloudflare.title')}</h2>
             <p>{t('solutions.cloudflare.intro')}</p>
@@ -118,7 +116,7 @@ const anchors = [
             <p>{t('solutions.security.intro')}</p>
           </div>
           <div class="sol-cards reveal">
-            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} image="/images/card-cybersecurity.jpeg" />
+            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} />
             <SolutionCard title={t('solutions.security.mdm.title')}     description={t('solutions.security.mdm.body')}     items={[]} />
             <SolutionCard title={t('solutions.security.dlp.title')}     description={t('solutions.security.dlp.body')}     items={[]} />
             <SolutionCard title={t('solutions.security.edr.title')}     description={t('solutions.security.edr.body')}     items={[]} />
@@ -126,7 +124,7 @@ const anchors = [
         </section>
 
         <!-- 5. Altyapı Yazılımları -->
-        <section id="altyapi-yazilim" class="sol-section" aria-labelledby="altyapi-title">
+        <section id="altyapi-yazilim" class="sol-section sol-section--bg" style="background-image: url('/images/banner-infra-software.jpeg');" aria-labelledby="altyapi-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.infrasoftware.title')}</span>
             <h2 id="altyapi-title">{t('solutions.infrasoftware.title')}</h2>
@@ -141,7 +139,7 @@ const anchors = [
         </section>
 
         <!-- 6. AI/ML -->
-        <section id="ai-ml" class="sol-section sol-section--bg" style="background-image: url('/images/bg-brain-circuit.jpeg');" aria-labelledby="ai-title">
+        <section id="ai-ml" class="sol-section sol-section--bg" style="background-image: url('/images/banner-ai-ml.jpeg');" aria-labelledby="ai-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.ai.title')}</span>
             <h2 id="ai-title">{t('solutions.ai.title')}</h2>
@@ -156,7 +154,7 @@ const anchors = [
         </section>
 
         <!-- 7. Zayıf Akım -->
-        <section id="zayif-akim" class="sol-section" aria-labelledby="zayif-akim-title">
+        <section id="zayif-akim" class="sol-section sol-section--bg" style="background-image: url('/images/card-cabling.jpeg');" aria-labelledby="zayif-akim-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.lowvoltage.title')}</span>
             <h2 id="zayif-akim-title">{t('solutions.lowvoltage.title')}</h2>
@@ -167,7 +165,6 @@ const anchors = [
               title={t('solutions.lowvoltage.security.title')}
               description={t('solutions.lowvoltage.security.intro')}
               items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]}
-              image="/images/card-cabling.jpeg"
             />
             <SolutionCard
               title={t('solutions.lowvoltage.fire.title')}

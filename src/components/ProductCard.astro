@@ -6,12 +6,11 @@ interface Props {
   features: string[];
   cta: string;
   ctaHref: string;
-  flip?: boolean;
 }
-const { name, tagline, description, features, cta, ctaHref, flip = false } = Astro.props;
+const { name, tagline, description, features, cta, ctaHref } = Astro.props;
 ---
 
-<article class={`product-card reveal${flip ? ' product-card--flip' : ''}`}>
+<article class="product-card reveal">
   <div class="product-card__text">
     <span class="section-label">{name}</span>
     <h3 class="product-card__tagline">{tagline}</h3>
@@ -54,9 +53,6 @@ const { name, tagline, description, features, cta, ctaHref, flip = false } = Ast
     border-color: rgba(0, 200, 200, 0.35);
     border-left-color: var(--color-teal);
   }
-
-  .product-card--flip .product-card__text { order: 2; }
-  .product-card--flip .product-card__features { order: 1; }
 
   .product-card__tagline {
     font-size: clamp(1.2rem, 2.5vw, 1.5rem);
@@ -107,7 +103,5 @@ const { name, tagline, description, features, cta, ctaHref, flip = false } = Ast
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    .product-card--flip .product-card__text,
-    .product-card--flip .product-card__features { order: unset; }
   }
 </style>

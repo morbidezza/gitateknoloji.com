@@ -13,7 +13,24 @@ const lang = 'en';
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
-const partners = ['HPE','Dell','IBM','Cisco','Juniper','Citrix','Fortinet','CheckPoint','Proxmox','XenServer','Veeam','Acronis','NetScaler','Microsoft','Cloudflare'];
+const SI = (slug: string) => `https://cdn.simpleicons.org/${slug}/ffffff`;
+const partners = [
+  { name: 'HPE',        logo: SI('hewlettpackardenterprise') },
+  { name: 'Dell',       logo: SI('dell') },
+  { name: 'IBM',        logo: SI('ibm') },
+  { name: 'Cisco',      logo: SI('cisco') },
+  { name: 'Juniper',    logo: SI('junipernetworks') },
+  { name: 'Citrix',     logo: SI('citrix') },
+  { name: 'Fortinet',   logo: SI('fortinet') },
+  { name: 'CheckPoint', logo: SI('checkpointsoftwaretechnologies') },
+  { name: 'Proxmox',    logo: SI('proxmox') },
+  { name: 'XenServer',  logo: 'https://www.xenserver.com/content/dam/xenserver/images/xenserver-full-color-rgb.svg', mono: false },
+  { name: 'Veeam',      logo: SI('veeam') },
+  { name: 'Acronis',    logo: SI('acronis') },
+  { name: 'NetScaler',  logo: 'https://bpsme.com/wp-content/uploads/2016/06/NSLogo.png', mono: false },
+  { name: 'Microsoft',  logo: SI('microsoft') },
+  { name: 'Cloudflare', logo: SI('cloudflare') },
+];
 
 const mspIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`;
 const swIcon  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
