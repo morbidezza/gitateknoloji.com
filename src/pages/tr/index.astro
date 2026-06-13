@@ -94,43 +94,53 @@ const msIcon  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
         </div>
         <div class="cards-grid cards-grid--4">
           <SolutionCard
-            title={t('solutions.lowvoltage.title')}
-            description={t('solutions.lowvoltage.intro')}
-            items={[t('solutions.lowvoltage.security.title'), t('solutions.lowvoltage.fire.title'), t('solutions.lowvoltage.data.title')]}
-            image="/images/card-cabling.jpeg"
-          />
-          <SolutionCard
             title={t('solutions.network.title')}
             description={t('solutions.network.intro')}
             items={[t('solutions.network.wired.title'), t('solutions.network.sdwan.title'), t('solutions.network.waf.title')]}
             image="/images/card-network.jpeg"
+            href={`/${lang}/cozumler#kurumsal-ag`}
           />
           <SolutionCard
             title={t('solutions.systems.title')}
             description={t('solutions.systems.intro')}
             items={[t('solutions.systems.server.title'), t('solutions.systems.cloud.title'), t('solutions.systems.devops.title')]}
             image="/images/card-enterprise.jpeg"
+            href={`/${lang}/cozumler#sistem`}
+          />
+          <SolutionCard
+            title={t('solutions.cloudflare.title')}
+            description={t('solutions.cloudflare.intro')}
+            items={[t('solutions.cloudflare.workers.title'), t('solutions.cloudflare.r2.title'), t('solutions.cloudflare.cdn.title')]}
+            image="/images/banner-cloudflare.jpeg"
+            href={`/${lang}/cozumler#cloudflare`}
           />
           <SolutionCard
             title={t('solutions.security.title')}
             description={t('solutions.security.intro')}
             items={[t('solutions.security.network.title'), t('solutions.security.mdm.title'), t('solutions.security.edr.title')]}
             image="/images/card-cybersecurity.jpeg"
-          />
-          <SolutionCard
-            title={t('solutions.cloudflare.title')}
-            description={t('solutions.cloudflare.intro')}
-            items={[t('solutions.cloudflare.workers.title'), t('solutions.cloudflare.r2.title'), t('solutions.cloudflare.cdn.title')]}
+            href={`/${lang}/cozumler#siber-guvenlik`}
           />
           <SolutionCard
             title={t('solutions.infrasoftware.title')}
             description={t('solutions.infrasoftware.intro')}
             items={[t('solutions.infrasoftware.cluster.title'), t('solutions.infrasoftware.sdwan.title'), t('solutions.infrasoftware.storage.title')]}
+            image="/images/banner-infra-software.jpeg"
+            href={`/${lang}/cozumler#altyapi-yazilim`}
           />
           <SolutionCard
             title={t('solutions.ai.title')}
             description={t('solutions.ai.intro')}
             items={[t('solutions.ai.predictive.title'), t('solutions.ai.anomaly.title'), t('solutions.ai.automation.title')]}
+            image="/images/banner-ai-ml.jpeg"
+            href={`/${lang}/cozumler#ai-ml`}
+          />
+          <SolutionCard
+            title={t('solutions.lowvoltage.title')}
+            description={t('solutions.lowvoltage.intro')}
+            items={[t('solutions.lowvoltage.security.title'), t('solutions.lowvoltage.fire.title'), t('solutions.lowvoltage.data.title')]}
+            image="/images/card-cabling.jpeg"
+            href={`/${lang}/cozumler#zayif-akim`}
           />
         </div>
       </div>

@@ -5,11 +5,13 @@ interface Props {
   items: string[];
   id?: string;
   image?: string;
+  href?: string;
 }
-const { title, description, items, id, image } = Astro.props;
+const { title, description, items, id, image, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
 ---
 
-<div class="solution-card reveal" id={id}>
+<Tag class="solution-card reveal" id={id} href={href || undefined}>
   {image && <img src={image} alt={title} class="solution-card__img" loading="lazy" />}
   <span class="solution-card__accent" aria-hidden="true"></span>
   <h3 class="solution-card__title">{title}</h3>
@@ -28,9 +30,15 @@ const { title, description, items, id, image } = Astro.props;
       ))}
     </ul>
   )}
-</div>
+</Tag>
 
 <style>
+  a.solution-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
   .solution-card {
     position: relative;
     background: transparent;
