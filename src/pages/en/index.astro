@@ -34,9 +34,9 @@ const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
           <p>{t('services.subtitle')}</p>
         </div>
         <div class="cards-grid">
-          <ServiceCard icon={mspIcon} title={t('services.msp.title')} description={t('services.msp.intro')} href={`/${lang}/services#msp`} />
-          <ServiceCard icon={swIcon}  title={t('services.software.title')} description={t('services.software.intro')} href={`/${lang}/services#software`} />
-          <ServiceCard icon={rndIcon} title={t('services.rnd.title')} description={t('services.rnd.intro')} href={`/${lang}/services#rnd`} />
+          <ServiceCard icon={mspIcon} title={t('services.msp.title')} description={t('services.msp.intro')} href={`/${lang}/services#msp`} image="/images/card-msp.jpeg" />
+          <ServiceCard icon={swIcon}  title={t('services.software.title')} description={t('services.software.intro')} href={`/${lang}/services#software`} image="/images/card-software.jpeg" />
+          <ServiceCard icon={rndIcon} title={t('services.rnd.title')} description={t('services.rnd.intro')} href={`/${lang}/services#rnd`} image="/images/card-rnd.jpeg" />
         </div>
       </div>
     </section>
@@ -49,10 +49,10 @@ const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
           <p>{t('solutions.subtitle')}</p>
         </div>
         <div class="cards-grid cards-grid--4">
-          <SolutionCard title={t('solutions.lowvoltage.title')} description={t('solutions.lowvoltage.intro')} items={[t('solutions.lowvoltage.security.title'), t('solutions.lowvoltage.fire.title'), t('solutions.lowvoltage.data.title')]} />
-          <SolutionCard title={t('solutions.network.title')}    description={t('solutions.network.intro')}    items={[t('solutions.network.wired.title'), t('solutions.network.sdwan.title'), t('solutions.network.waf.title')]} />
-          <SolutionCard title={t('solutions.systems.title')}    description={t('solutions.systems.intro')}    items={[t('solutions.systems.server.title'), t('solutions.systems.cloud.title'), t('solutions.systems.devops.title')]} />
-          <SolutionCard title={t('solutions.security.title')}   description={t('solutions.security.intro')}   items={[t('solutions.security.network.title'), t('solutions.security.mdm.title'), t('solutions.security.edr.title')]} />
+          <SolutionCard title={t('solutions.lowvoltage.title')} description={t('solutions.lowvoltage.intro')} items={[t('solutions.lowvoltage.security.title'), t('solutions.lowvoltage.fire.title'), t('solutions.lowvoltage.data.title')]} image="/images/card-cabling.jpeg" />
+          <SolutionCard title={t('solutions.network.title')}    description={t('solutions.network.intro')}    items={[t('solutions.network.wired.title'), t('solutions.network.sdwan.title'), t('solutions.network.waf.title')]} image="/images/card-network.jpeg" />
+          <SolutionCard title={t('solutions.systems.title')}    description={t('solutions.systems.intro')}    items={[t('solutions.systems.server.title'), t('solutions.systems.cloud.title'), t('solutions.systems.devops.title')]} image="/images/card-enterprise.jpeg" />
+          <SolutionCard title={t('solutions.security.title')}   description={t('solutions.security.intro')}   items={[t('solutions.security.network.title'), t('solutions.security.mdm.title'), t('solutions.security.edr.title')]} image="/images/card-cybersecurity.jpeg" />
         </div>
       </div>
     </section>
@@ -113,7 +113,7 @@ const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
   .products-teaser__item { display: flex; align-items: center; gap: 1rem; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--color-text-muted); padding: 1rem 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg-2); transition: color var(--transition), border-color var(--transition); }
   .products-teaser__item:hover { color: var(--color-teal); border-color: rgba(0,200,200,0.3); }
   .products-teaser__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-teal); flex-shrink: 0; }
-  .cta-banner { background: linear-gradient(135deg, rgba(0,200,200,0.06), rgba(26,79,160,0.08)); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .cta-banner { background: linear-gradient(135deg, rgba(5,13,26,0.80), rgba(10,95,214,0.75)), url('/images/bg-tech-office.jpeg') center/cover no-repeat; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
   .cta-banner__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
   .cta-banner__inner h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
   .cta-banner__inner p { color: var(--color-text-muted); margin-top: 0.5rem; }

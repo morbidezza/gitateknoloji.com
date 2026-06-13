@@ -40,18 +40,21 @@ const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
             title={t('services.msp.title')}
             description={t('services.msp.intro')}
             href={`/${lang}/hizmetler#msp`}
+            image="/images/card-msp.jpeg"
           />
           <ServiceCard
             icon={swIcon}
             title={t('services.software.title')}
             description={t('services.software.intro')}
             href={`/${lang}/hizmetler#yazilim`}
+            image="/images/card-software.jpeg"
           />
           <ServiceCard
             icon={rndIcon}
             title={t('services.rnd.title')}
             description={t('services.rnd.intro')}
             href={`/${lang}/hizmetler#arge`}
+            image="/images/card-rnd.jpeg"
           />
         </div>
       </div>
@@ -70,21 +73,25 @@ const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
             title={t('solutions.lowvoltage.title')}
             description={t('solutions.lowvoltage.intro')}
             items={[t('solutions.lowvoltage.security.title'), t('solutions.lowvoltage.fire.title'), t('solutions.lowvoltage.data.title')]}
+            image="/images/card-cabling.jpeg"
           />
           <SolutionCard
             title={t('solutions.network.title')}
             description={t('solutions.network.intro')}
             items={[t('solutions.network.wired.title'), t('solutions.network.sdwan.title'), t('solutions.network.waf.title')]}
+            image="/images/card-network.jpeg"
           />
           <SolutionCard
             title={t('solutions.systems.title')}
             description={t('solutions.systems.intro')}
             items={[t('solutions.systems.server.title'), t('solutions.systems.cloud.title'), t('solutions.systems.devops.title')]}
+            image="/images/card-enterprise.jpeg"
           />
           <SolutionCard
             title={t('solutions.security.title')}
             description={t('solutions.security.intro')}
             items={[t('solutions.security.network.title'), t('solutions.security.mdm.title'), t('solutions.security.edr.title')]}
+            image="/images/card-cybersecurity.jpeg"
           />
         </div>
       </div>
@@ -176,7 +183,7 @@ const rndIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
     background: var(--color-teal); flex-shrink: 0;
   }
 
-  .cta-banner { background: linear-gradient(135deg, rgba(0,200,200,0.06), rgba(26,79,160,0.08)); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .cta-banner { background: linear-gradient(135deg, rgba(5,13,26,0.80), rgba(10,95,214,0.75)), url('/images/bg-tech-office.jpeg') center/cover no-repeat; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
   .cta-banner__inner {
     display: flex;
     align-items: center;

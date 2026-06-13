@@ -47,7 +47,7 @@ const currentPath = Astro.url.pathname;
       </div>
     </section>
 
-    <section class="section section--alt" id="software" aria-labelledby="sw-title">
+    <section class="section section--alt section--bg-img" id="software" style="background-image: url('/images/bg-code-streams.jpeg');" aria-labelledby="sw-title">
       <div class="container">
         <div class="service-block reveal">
           <div class="service-block__header">
@@ -175,6 +175,10 @@ const currentPath = Astro.url.pathname;
 </Base>
 
 <style>
+  .section--bg-img { position: relative; background-size: cover; background-position: center; }
+  .section--bg-img::before { content: ''; position: absolute; inset: 0; background: rgba(5, 13, 26, 0.92); pointer-events: none; }
+  .section--bg-img > * { position: relative; z-index: 1; }
+
   .page-hero { padding: 7rem 0 4rem; background: transparent; border-bottom: none; }
   .page-hero__inner { display: flex; flex-direction: column; gap: 0.5rem; }
   .page-hero__sub { color: var(--color-text-muted); font-size: 1.1rem; max-width: 60ch; margin-top: 0.5rem; }

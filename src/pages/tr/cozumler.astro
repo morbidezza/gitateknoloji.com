@@ -46,7 +46,7 @@ const anchors = [
       <div class="solutions-content">
 
         <!-- 1. Kurumsal Ağ -->
-        <section id="kurumsal-ag" class="sol-section" aria-labelledby="kurumsal-ag-title">
+        <section id="kurumsal-ag" class="sol-section sol-section--bg" style="background-image: url('/images/card-network.jpeg');" aria-labelledby="kurumsal-ag-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.network.title')}</span>
             <h2 id="kurumsal-ag-title">{t('solutions.network.title')}</h2>
@@ -57,11 +57,13 @@ const anchors = [
               title={t('solutions.network.wired.title')}
               description={t('solutions.network.wired.intro')}
               items={[t('solutions.network.wired.switching'), t('solutions.network.wired.wireless'), t('solutions.network.wired.management')]}
+              image="/images/card-network.jpeg"
             />
             <SolutionCard
               title={t('solutions.network.sdwan.title')}
               description={t('solutions.network.sdwan.intro')}
               items={[t('solutions.network.sdwan.traffic'), t('solutions.network.sdwan.central'), t('solutions.network.sdwan.secure')]}
+              image="/images/card-network-alt.jpeg"
             />
             <SolutionCard
               title={t('solutions.network.waf.title')}
@@ -72,7 +74,7 @@ const anchors = [
         </section>
 
         <!-- 3. Sistem -->
-        <section id="sistem" class="sol-section" aria-labelledby="sistem-title">
+        <section id="sistem" class="sol-section sol-section--bg" style="background-image: url('/images/bg-server-room.jpeg');" aria-labelledby="sistem-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.systems.title')}</span>
             <h2 id="sistem-title">{t('solutions.systems.title')}</h2>
@@ -109,14 +111,14 @@ const anchors = [
         </section>
 
         <!-- 5. Siber Güvenlik -->
-        <section id="siber-guvenlik" class="sol-section" aria-labelledby="siber-title">
+        <section id="siber-guvenlik" class="sol-section sol-section--bg" style="background-image: url('/images/bg-cyber-shield.jpeg');" aria-labelledby="siber-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.security.title')}</span>
             <h2 id="siber-title">{t('solutions.security.title')}</h2>
             <p>{t('solutions.security.intro')}</p>
           </div>
           <div class="sol-cards reveal">
-            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} />
+            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} image="/images/card-cybersecurity.jpeg" />
             <SolutionCard title={t('solutions.security.mdm.title')}     description={t('solutions.security.mdm.body')}     items={[]} />
             <SolutionCard title={t('solutions.security.dlp.title')}     description={t('solutions.security.dlp.body')}     items={[]} />
             <SolutionCard title={t('solutions.security.edr.title')}     description={t('solutions.security.edr.body')}     items={[]} />
@@ -139,7 +141,7 @@ const anchors = [
         </section>
 
         <!-- 6. AI/ML -->
-        <section id="ai-ml" class="sol-section" aria-labelledby="ai-title">
+        <section id="ai-ml" class="sol-section sol-section--bg" style="background-image: url('/images/bg-brain-circuit.jpeg');" aria-labelledby="ai-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.ai.title')}</span>
             <h2 id="ai-title">{t('solutions.ai.title')}</h2>
@@ -165,6 +167,7 @@ const anchors = [
               title={t('solutions.lowvoltage.security.title')}
               description={t('solutions.lowvoltage.security.intro')}
               items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]}
+              image="/images/card-cabling.jpeg"
             />
             <SolutionCard
               title={t('solutions.lowvoltage.fire.title')}
@@ -218,6 +221,9 @@ const anchors = [
 
   .sol-section { padding: 3rem 0; border-bottom: 1px solid var(--color-border); }
   .sol-section:last-child { border-bottom: none; }
+  .sol-section--bg { position: relative; background-size: cover; background-position: center; }
+  .sol-section--bg::before { content: ''; position: absolute; inset: 0; background: rgba(5, 13, 26, 0.90); pointer-events: none; }
+  .sol-section--bg > * { position: relative; z-index: 1; }
   .sol-section__header { margin-bottom: 2rem; }
   .sol-section__header h2 { margin: 0.25rem 0 0.75rem; }
   .sol-section__header p { color: var(--color-text-muted); font-size: 0.95rem; max-width: 70ch; }

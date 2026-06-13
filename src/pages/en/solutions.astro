@@ -42,20 +42,20 @@ const anchors = [
       </aside>
 
       <div class="solutions-content">
-        <section id="network" class="sol-section" aria-labelledby="network-title">
+        <section id="network" class="sol-section sol-section--bg" style="background-image: url('/images/card-network.jpeg');" aria-labelledby="network-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.network.title')}</span>
             <h2 id="network-title">{t('solutions.network.title')}</h2>
             <p>{t('solutions.network.intro')}</p>
           </div>
           <div class="sol-cards reveal">
-            <SolutionCard title={t('solutions.network.wired.title')} description={t('solutions.network.wired.intro')} items={[t('solutions.network.wired.switching'), t('solutions.network.wired.wireless'), t('solutions.network.wired.management')]} />
-            <SolutionCard title={t('solutions.network.sdwan.title')} description={t('solutions.network.sdwan.intro')} items={[t('solutions.network.sdwan.traffic'), t('solutions.network.sdwan.central'), t('solutions.network.sdwan.secure')]} />
+            <SolutionCard title={t('solutions.network.wired.title')} description={t('solutions.network.wired.intro')} items={[t('solutions.network.wired.switching'), t('solutions.network.wired.wireless'), t('solutions.network.wired.management')]} image="/images/card-network.jpeg" />
+            <SolutionCard title={t('solutions.network.sdwan.title')} description={t('solutions.network.sdwan.intro')} items={[t('solutions.network.sdwan.traffic'), t('solutions.network.sdwan.central'), t('solutions.network.sdwan.secure')]} image="/images/card-network-alt.jpeg" />
             <SolutionCard title={t('solutions.network.waf.title')}   description={t('solutions.network.waf.intro')}   items={[t('solutions.network.waf.lb'), t('solutions.network.waf.waf')]} />
           </div>
         </section>
 
-        <section id="systems" class="sol-section" aria-labelledby="systems-title">
+        <section id="systems" class="sol-section sol-section--bg" style="background-image: url('/images/bg-server-room.jpeg');" aria-labelledby="systems-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.systems.title')}</span>
             <h2 id="systems-title">{t('solutions.systems.title')}</h2>
@@ -88,14 +88,14 @@ const anchors = [
           </div>
         </section>
 
-        <section id="cyber-security" class="sol-section" aria-labelledby="cyber-title">
+        <section id="cyber-security" class="sol-section sol-section--bg" style="background-image: url('/images/bg-cyber-shield.jpeg');" aria-labelledby="cyber-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.security.title')}</span>
             <h2 id="cyber-title">{t('solutions.security.title')}</h2>
             <p>{t('solutions.security.intro')}</p>
           </div>
           <div class="sol-cards reveal">
-            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} />
+            <SolutionCard title={t('solutions.security.network.title')} description={t('solutions.security.network.body')} items={[]} image="/images/card-cybersecurity.jpeg" />
             <SolutionCard title={t('solutions.security.mdm.title')}     description={t('solutions.security.mdm.body')}     items={[]} />
             <SolutionCard title={t('solutions.security.dlp.title')}     description={t('solutions.security.dlp.body')}     items={[]} />
             <SolutionCard title={t('solutions.security.edr.title')}     description={t('solutions.security.edr.body')}     items={[]} />
@@ -116,7 +116,7 @@ const anchors = [
           </div>
         </section>
 
-        <section id="ai-ml" class="sol-section" aria-labelledby="ai-title">
+        <section id="ai-ml" class="sol-section sol-section--bg" style="background-image: url('/images/bg-brain-circuit.jpeg');" aria-labelledby="ai-title">
           <div class="sol-section__header reveal">
             <span class="section-label">{t('solutions.ai.title')}</span>
             <h2 id="ai-title">{t('solutions.ai.title')}</h2>
@@ -137,7 +137,7 @@ const anchors = [
             <p>{t('solutions.lowvoltage.intro')}</p>
           </div>
           <div class="sol-cards reveal">
-            <SolutionCard title={t('solutions.lowvoltage.security.title')} description={t('solutions.lowvoltage.security.intro')} items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]} />
+            <SolutionCard title={t('solutions.lowvoltage.security.title')} description={t('solutions.lowvoltage.security.intro')} items={[t('solutions.lowvoltage.security.cctv'), t('solutions.lowvoltage.security.access'), t('solutions.lowvoltage.security.announcement'), t('solutions.lowvoltage.security.integration')]} image="/images/card-cabling.jpeg" />
             <SolutionCard title={t('solutions.lowvoltage.fire.title')}     description={t('solutions.lowvoltage.fire.intro')}     items={[t('solutions.lowvoltage.fire.compliance'), t('solutions.lowvoltage.fire.detection'), t('solutions.lowvoltage.fire.suppression'), t('solutions.lowvoltage.fire.e2e')]} />
             <SolutionCard title={t('solutions.lowvoltage.data.title')}     description={t('solutions.lowvoltage.data.intro')}     items={[t('solutions.lowvoltage.data.design'), t('solutions.lowvoltage.data.quality'), t('solutions.lowvoltage.data.cert'), t('solutions.lowvoltage.data.sustainable')]} />
           </div>
@@ -162,6 +162,9 @@ const anchors = [
   .sidebar-nav__link:hover { color: var(--color-teal); border-left-color: var(--color-teal); }
   .sol-section { padding: 3rem 0; border-bottom: 1px solid var(--color-border); }
   .sol-section:last-child { border-bottom: none; }
+  .sol-section--bg { position: relative; background-size: cover; background-position: center; }
+  .sol-section--bg::before { content: ''; position: absolute; inset: 0; background: rgba(5, 13, 26, 0.90); pointer-events: none; }
+  .sol-section--bg > * { position: relative; z-index: 1; }
   .sol-section__header { margin-bottom: 2rem; }
   .sol-section__header h2 { margin: 0.25rem 0 0.75rem; }
   .sol-section__header p { color: var(--color-text-muted); font-size: 0.95rem; max-width: 70ch; }
