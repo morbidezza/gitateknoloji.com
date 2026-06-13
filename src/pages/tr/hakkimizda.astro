@@ -34,12 +34,12 @@ const currentPath = Astro.url.pathname;
         </div>
         <div class="about-story__stats reveal">
           {[
-            { label: t('about.stat.experience'), sub: null,                      icon: '⟳' },
-            { label: t('about.stat.msp'),        sub: t('about.stat.msp.sub'),   icon: '◎' },
-            { label: t('about.stat.customer'),   sub: null,                      icon: '◆' },
+            { label: t('about.stat.experience'), sub: null,                    img: '/images/about-stat-experience.jpeg' },
+            { label: t('about.stat.msp'),        sub: t('about.stat.msp.sub'), img: '/images/about-stat-msp.jpeg' },
+            { label: t('about.stat.customer'),   sub: null,                    img: '/images/about-stat-customer.jpeg' },
           ].map(s => (
             <div class="stat-card">
-              <span class="stat-card__icon" aria-hidden="true">{s.icon}</span>
+              <img src={s.img} alt={s.label} class="stat-card__img" loading="lazy" />
               <span class="stat-card__label">{s.label}</span>
               {s.sub && <span class="stat-card__sub">{s.sub}</span>}
             </div>
@@ -62,7 +62,6 @@ const currentPath = Astro.url.pathname;
             { title: 'Proaktif Teknoloji Ortaklığı', body: 'Sadece bir hizmet sağlayıcı değil, işletmelerin dijitalleşme yolculuğunda stratejik bir teknoloji ortağı olarak konumlanıyoruz.' },
           ].map((item, i) => (
             <div class="approach-row">
-              <div class="approach-row__num" aria-hidden="true">0{i+1}</div>
               <div>
                 <h3 class="approach-row__title">{item.title}</h3>
                 <p class="approach-row__body">{item.body}</p>
@@ -129,10 +128,17 @@ const currentPath = Astro.url.pathname;
     flex-direction: column;
     gap: 0.5rem;
     transition: border-color var(--transition), box-shadow var(--transition);
+    overflow: hidden;
+  }
+  .stat-card__img {
+    width: calc(100% + 3rem);
+    margin: -1.5rem -1.5rem 0.75rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
   .stat-card:hover { border-color: rgba(0,200,200,0.3); box-shadow: 0 0 24px var(--color-glow); }
-  .stat-card__icon { font-size: 1.5rem; color: var(--color-teal); }
-  .stat-card__label { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; }
+.stat-card__label { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; }
 
   .approach-rows { display: flex; flex-direction: column; gap: 1.5rem; }
   .approach-row {
@@ -146,17 +152,7 @@ const currentPath = Astro.url.pathname;
     transition: border-color var(--transition);
   }
   .approach-row:hover { border-color: rgba(0,200,200,0.3); }
-  .approach-row__num {
-    font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-teal);
-    opacity: 0.4;
-    flex-shrink: 0;
-    line-height: 1;
-    margin-top: 0.2rem;
-  }
-  .approach-row__title { font-size: 1.1rem; margin-bottom: 0.4rem; }
+.approach-row__title { font-size: 1.1rem; margin-bottom: 0.4rem; }
   .approach-row__body  { color: var(--color-text-muted); font-size: 0.93rem; }
 
   .vision-cards {
